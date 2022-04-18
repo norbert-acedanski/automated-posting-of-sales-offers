@@ -12,6 +12,12 @@ class PostOffer:
         self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50}, "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
         self.description_boundaries = {"OLX": {"min": 80, "max": 9000}, "Allegro Lokalnie": {"min": 1, "max": 3000}, "Sprzedajemy": {"min": 1, "max": 6000}, "Vinted": {"min": 5, "max": 3000}}
 
+    def add_offer_folders_with_photos_and_properties(self, offer_list: list):
+        folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
+        for offer in offer_list:
+            os.mkdir(folder_path + offer + "/")
+            os.mkdir(folder_path + offer + "/" + "photos/")
+
     def add_properties_file_to_each_offer_folder(self):
         list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
         json_data = {
@@ -56,7 +62,7 @@ class PostOffer:
                 else:
                     print(": Not in bounds")
                     print("Bounds for " + key + " are: min - " + str(value["min"]) + ", max - " + str(value["max"]))
-        print("")
+            print("")
 
     def check_description_lengths(self):
         list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
@@ -72,10 +78,11 @@ class PostOffer:
                 else:
                     print(": Not in bounds")
                     print("Bounds for " + key + " are: min - " + str(value["min"]) + ", max - " + str(value["max"]))
-        print("")
+            print("")
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
+    offer_poster.add_offer_folders_with_photos_and_properties(["Sample offer 1", "Sample offer 2"])
     offer_poster.add_properties_file_to_each_offer_folder()
     offer_poster.print_bounds_for_title()
     offer_poster.print_bounds_for_description()
