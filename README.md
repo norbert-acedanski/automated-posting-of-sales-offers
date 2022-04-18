@@ -23,9 +23,17 @@ It is handy to check these kinds of information before starting the process of a
 5. Check, whether the information included in **properties.json** file and photos meet the expectations of the sites the script will post them in. To do that, use ***check_title_lengths***, ***check_description_lengths*** methods. The result will be printed in the terminal.
 
 # To Do:
-- add method, that checks number of photos in all directories and their sizes and compares them with boundaries for each sales portal
-- 
-- add coloring of the output properties of properties.
+- add method, that checks number of photos and their sizes in all directories and compares them with boundaries for each sales portal
+- add method, that checks the sex of the item
+- add method, that checks the price of the item
+- add method, that checks the colors of the item
+- add method, that checks the package size of the item
+- add method, that checks the condition of the item
+- add method, that checks the category of the item (later if the list of categories is stored)
+- add coloring of the output properties of properties
+- add method, that reads login and password for each site
+- add basic login and logout method for each site
+- add posting method for each site
 
 # Licence
 Distributed under the MIT License. See LICENSE file for more information.
