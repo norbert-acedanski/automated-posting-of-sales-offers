@@ -22,10 +22,14 @@ def test_all_subfolders_and_files():
     json_data = {
                  "title": "Sample Title",
                  "description": "Description",
+                 "category": "Sample category",
+                 "condition": "new",
                  "size": "M",
+                 "sex": "M",
                  "price": 10,
                  "brand": "None",
-                 "colors": ["black", "white"]
+                 "colors": ["black", "white"],
+                 "package size": "S"
                 }
     with open(sample_offer_path + "properties.json", "w") as properties_file:
         json.dump(json_data, properties_file)
