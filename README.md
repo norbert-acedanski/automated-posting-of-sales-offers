@@ -33,7 +33,10 @@ It is handy to check these kinds of information before starting the process of a
 - add coloring of the output properties of properties
 - add method, that reads login and password for each site
 - add basic login and logout method for each site
+- add login and logout tests
+- add checking proper site tests
 - add posting method for each site
+- add posting tests
 
 # Licence
 Distributed under the MIT License. See LICENSE file for more information.
