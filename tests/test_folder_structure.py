@@ -2,11 +2,7 @@ import os
 import json
 import pytest
 import shutil
-
-OFFERS_FOLDER_NAME = "offers_to_post"
-NAMES_OF_FILES_AND_FOLDERS = ["photos", "properties.json"]
-MANDATORY_PROPERTIES = ["title", "description", "size", "price", "brand", "colors"]
-IMAGE_FORMATS = ["jpeg", "png"]
+from main import OFFERS_FOLDER_NAME, NAMES_OF_FILES_AND_FOLDERS, MANDATORY_PROPERTIES, IMAGE_FORMATS
 
 
 def test_all_subfolders_and_files():
@@ -56,6 +52,6 @@ def test_all_subfolders_and_files():
             assert key in MANDATORY_PROPERTIES
         # assert len(json_data[MANDATORY_PROPERTIES[0]]) > 16
         # assert len(json_data[MANDATORY_PROPERTIES[1]]) > 80
-        ############################################################################
-        shutil.rmtree(sample_offer_path)
-        ############################################################################
+    ############################################################################
+    shutil.rmtree(sample_offer_path)
+    ############################################################################
