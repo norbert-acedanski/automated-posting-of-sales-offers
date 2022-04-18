@@ -9,18 +9,7 @@ IMAGE_FORMATS = ["jpeg", "png"]
 class PostOffer:
     def __init__(self):
         self.offers_folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
-        self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50}, "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
-        self.description_boundaries = {"OLX": {"min": 80, "max": 9000}, "Allegro Lokalnie": {"min": 1, "max": 3000}, "Sprzedajemy": {"min": 1, "max": 6000}, "Vinted": {"min": 5, "max": 3000}}
-
-    def add_offer_folders_with_photos_and_properties(self, offer_list: list):
-        folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
-        for offer in offer_list:
-            os.mkdir(folder_path + offer + "/")
-            os.mkdir(folder_path + offer + "/" + "photos/")
-
-    def add_properties_file_to_each_offer_folder(self):
-        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
-        json_data = {
+        self.json_data = {
                  "title": "Offer title. In case of OLX - title should be longer, than 16 characters.",
                  "description": "Description for an offer. In some cases (like OLX page), the description has to be longer, than 80 characters.",
                  "category": "Category, like Czapka zimowa/Koszule/Spodnie jeansowe etc.",
@@ -32,9 +21,22 @@ class PostOffer:
                  "colors": ["black", "white", "maximum of two colors in this list, with the most important as the first element"],
                  "package size": "S/M/L (S - small, M - medium, L - large)"
                 }
+        self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50}, "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
+        self.description_boundaries = {"OLX": {"min": 80, "max": 9000}, "Allegro Lokalnie": {"min": 1, "max": 3000}, "Sprzedajemy": {"min": 1, "max": 6000}, "Vinted": {"min": 5, "max": 3000}}
+
+    def add_offer_folders_with_photos_and_properties(self, offer_list: list):
+        folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
+        for offer in offer_list:
+            os.mkdir(folder_path + offer + "/")
+            os.mkdir(folder_path + offer + "/" + "photos/")
+        self.add_properties_file_to_each_offer_folder()
+
+    def add_properties_file_to_each_offer_folder(self):
+        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
         for offer_path in list_of_offers:
-            with open(offer_path + "/properties.json", "w") as properties_file:
-                json.dump(json_data, properties_file)
+            if not os.path.exists(offer_path + "/properties.json"):
+                with open(offer_path + "/properties.json", "w") as properties_file:
+                    json.dump(self.json_data, properties_file)
     
     def print_bounds_for_title(self):
         print("Title bounds [characters]:")
@@ -83,7 +85,7 @@ class PostOffer:
 if __name__ == "__main__":
     offer_poster = PostOffer()
     offer_poster.add_offer_folders_with_photos_and_properties(["Sample offer 1", "Sample offer 2"])
-    offer_poster.add_properties_file_to_each_offer_folder()
+    # offer_poster.add_properties_file_to_each_offer_folder()
     offer_poster.print_bounds_for_title()
     offer_poster.print_bounds_for_description()
     offer_poster.check_title_lengths()
