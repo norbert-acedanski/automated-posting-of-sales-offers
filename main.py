@@ -119,7 +119,7 @@ class PostOffer:
                 print(RED_COLOR + "Wrong extension of some of the photos! Check available photos extensions!" + ENDC)
             print("")
 
-    def check_sex_of_the_item(self):
+    def check_sex(self):
         list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
@@ -128,6 +128,17 @@ class PostOffer:
             print("Sex of the item: " + properties_data["sex"])
             if properties_data["sex"] not in SEXES:
                 print(RED_COLOR + "Wrong sex of the item!" + ENDC)
+            print("")
+
+    def check_price(self):
+        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
+        for offer_path in list_of_offers:
+            with open(offer_path + "/properties.json", "r") as properties_file:
+                properties_data = json.load(properties_file)
+            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" price properties:")
+            print("Price of the item: " + str(properties_data["price"]))
+            if properties_data["price"] < 0:
+                print(RED_COLOR + "Wrong price of the item!" + ENDC)
             print("")
 
     def print_all_limitations(self):
@@ -140,7 +151,8 @@ class PostOffer:
         self.check_title_lengths()
         self.check_description_lengths()
         self.check_number_of_photos_and_extension()
-        self.check_sex_of_the_item()
+        self.check_sex()
+        self.check_price()
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
