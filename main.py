@@ -1,4 +1,5 @@
 from prepare_and_check_offers import PrepareAndCheckOffers
+from posting_offers import LoginOLX, LoginAllegroLokalnie, LoginSprzedajemy, LoginVinted
 
 if __name__ == "__main__":
     offer_poster = PrepareAndCheckOffers()
