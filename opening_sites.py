@@ -1,19 +1,19 @@
-class OLXPage():
+class OLX():
     @staticmethod
     def launch_page(driver):
         driver.get("https://www.olx.pl/")
 
-class AllegroLokalniePage():    
+class AllegroLokalnie():    
     @staticmethod
     def launch_page(driver):
         driver.get("https://allegrolokalnie.pl/")
 
-class SprzedajemyPage():    
+class Sprzedajemy():    
     @staticmethod
     def launch_page(driver):
         driver.get("https://sprzedajemy.pl/")
 
-class VintedPage():    
+class Vinted():    
     @staticmethod
     def launch_page(driver):
         driver.get("https://www.vinted.pl/")
