@@ -7,6 +7,9 @@ MANDATORY_PROPERTIES = ["title", "description", "category", "condition", "size",
 IMAGE_EXTENSIONS = ["jpeg", "png"]
 SEXES = ["M", "K", "U"]
 CONDITIONS = ["fine", "good", "very good", "new without a tag", "new with a tag"]
+BLUE = '\033[94m'
+GREEN = '\033[92m'
+YELLOW = '\033[93m'
 RED_COLOR = '\033[91m'
 ENDC = '\033[0m'
 
@@ -44,37 +47,37 @@ class PostOffer:
                     json.dump(self.json_data, properties_file)
     
     def print_bounds_for_title(self):
-        print("Title limits [characters]:")
+        print(GREEN + "Title limits [characters]:" + ENDC)
         for key, value in self.title_boundaries.items():
-            print(f"{key}: min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            print(YELLOW + key + ENDC + ": min - " + BLUE + str(value["min"]) + ENDC + ", max - " + BLUE + str(value["max"]) + ENDC)
         print("")
 
     def print_bounds_for_description(self):
-        print("Description limits [characters]:")
+        print(GREEN + "Description limits [characters]:" + ENDC)
         for key, value in self.description_boundaries.items():
-            print(f"{key}: min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            print(YELLOW + key + ENDC + ": min - " + BLUE + str(value["min"]) + ENDC + ", max - " + BLUE + str(value["max"]) + ENDC)
         print("")
     
     def print_photos_restrictions(self):
-        print("Number of photos limits:")
+        print(GREEN + "Number of photos limits:" + ENDC)
         for key, value in self.number_of_photos_boundaries.items():
-            print(f"{key}: min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            print(YELLOW + key + ENDC + ": min - " + BLUE + str(value["min"]) + ENDC + ", max - " + BLUE + str(value["max"]) + ENDC)
         print("")
-        print("Acceptable photos extensions:")
+        print(GREEN + "Acceptable photos extensions:" + ENDC)
         for extension in IMAGE_EXTENSIONS:
-            print(f"* {extension}")
+            print("* " + BLUE + extension + ENDC)
         print("")
 
     def print_sexes_restrictions(self):
-        print("Acceptable sexes marks:")
+        print(GREEN + "Acceptable sexes marks:" + ENDC)
         for sex in SEXES:
-            print(f"* {sex}")
+            print("* " + BLUE + sex + ENDC)
         print("")
 
     def print_conditions_restrictions(self):
-        print("Acceptable list of conditions:")
+        print(GREEN + "Acceptable list of conditions:" + ENDC)
         for condition in CONDITIONS:
-            print(f"* {condition}")
+            print("* " + BLUE + condition + ENDC)
         print("")
 
     def check_title_lengths(self):
@@ -82,10 +85,10 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" title properties:")
-            print("Title length: " + str(len(properties_data["title"])))
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC + "\" title properties:")
+            print("Title length: " + BLUE + str(len(properties_data["title"])) + ENDC)
             for key, value in self.title_boundaries.items():
-                print(key + ": ", end="")
+                print(YELLOW + key + ENDC + ": ", end="")
                 if value["min"] <= len(properties_data["title"]) <= value["max"]:
                     print("In bounds")
                 else:
@@ -98,10 +101,10 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" description properties:")
-            print("Description length: " + str(len(properties_data["description"])))
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC +  "\" description properties:")
+            print("Description length: " + BLUE + str(len(properties_data["description"])) + ENDC)
             for key, value in self.description_boundaries.items():
-                print(key + ": ", end="")
+                print(YELLOW + key + ENDC + ": ", end="")
                 if value["min"] <= len(properties_data["description"]) <= value["max"]:
                     print("In bounds")
                 else:
@@ -113,10 +116,10 @@ class PostOffer:
         list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
         for offer_path in list_of_offers:
             found_photos = os.listdir(offer_path + "/photos/")
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" photos properties:")
-            print("Number of photos: " + str(len(found_photos)))
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC +  "\" photos properties:")
+            print("Number of photos: " + BLUE + str(len(found_photos)) + ENDC)
             for key, value in self.number_of_photos_boundaries.items():
-                print(key + ": ", end="")
+                print(YELLOW + key + ENDC + ": ", end="")
                 if value["min"] <= len(found_photos) <= value["max"]:
                     print("In bounds")
                 else:
@@ -131,7 +134,7 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" sex: " + properties_data["sex"])
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC + "\" sex: " + BLUE + properties_data["sex"] + ENDC)
             if properties_data["sex"] not in SEXES:
                 print(RED_COLOR + "Wrong sex of the item! Check available sexes!" + ENDC)
             print("")
@@ -141,7 +144,7 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" price: " + str(properties_data["price"]))
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC + "\" price: " + BLUE + str(properties_data["price"]) + ENDC)
             if properties_data["price"] < 0:
                 print(RED_COLOR + "Wrong price of the item! Price should be positive, or 0!" + ENDC)
             print("")
@@ -151,7 +154,7 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" condition: " + properties_data["condition"])
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC + "\" condition: " + BLUE + properties_data["condition"] + ENDC)
             if properties_data["condition"] not in CONDITIONS:
                 print(RED_COLOR + "Wrong condition of the item! Check available conditions!" + ENDC)
             print("")
@@ -173,7 +176,7 @@ class PostOffer:
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
-    offer_poster.add_offer_folders_with_photos(["Sample offer 1", "Sample offer 2"])
-    offer_poster.add_properties_file_to_each_offer_folder()
+    # offer_poster.add_offer_folders_with_photos(["Sample offer 1", "Sample offer 2"])
+    # offer_poster.add_properties_file_to_each_offer_folder()
     offer_poster.print_all_limitations()
     offer_poster.check_all_properties()
