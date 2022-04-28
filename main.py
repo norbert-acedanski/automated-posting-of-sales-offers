@@ -1,18 +1,15 @@
+import time
 from selenium import webdriver
 from credentials import Credentials
 from prepare_and_check_offers import PrepareAndCheckOffers
 from logging_to_sites import LoginOLX, LoginAllegroLokalnie, LoginSprzedajemy, LoginVinted
-from opening_sites import OLXPage, AllegroLokalniePage, SprzedajemyPage, VintedPage
+from opening_sites import OLX, AllegroLokalnie, Sprzedajemy, Vinted
 
-LIST_OF_SITES = ["OLX", "Allegro Lokalnie", "Sprzedajemy", "Vinted"]
-credentials = Credentials()
-LIST_OF_SITE_CREDENTIAL_FUNCTIONS = [credentials.get_olx_credentials, credentials.get_allegro_lokalnie_credentials, 
-                                     credentials.get_sprzedajemy_credentials, credentials.get_vinted_credentials]
-SITE_CREDENTIAL_FUNCTIONS_DICTIONARY = {site: credentials_function for site, credentials_function in zip(LIST_OF_SITES, LIST_OF_SITE_CREDENTIAL_FUNCTIONS)}
 LIST_OF_BROWSERS = ["chrome", "edge", "firefox", "ie"]
 LIST_OF_DRIVERS = [webdriver.Chrome, webdriver.Edge, webdriver.Firefox, webdriver.Ie]
 BROWSER_DRIVER_DICTIONARY = {browser: driver for browser, driver in zip(LIST_OF_BROWSERS, LIST_OF_DRIVERS)}
 driver = None
+credentials = Credentials()
 
 def prepare_and_check_offers():
     offer_poster = PrepareAndCheckOffers()
@@ -21,11 +18,7 @@ def prepare_and_check_offers():
     offer_poster.print_all_limitations()
     offer_poster.check_all_properties()
 
-def get_credentials(desired_sites: list):
-    for site in desired_sites:
-        SITE_CREDENTIAL_FUNCTIONS_DICTIONARY[site]()
-
-def open_choosen_browser():
+def open_browser():
     global driver
     print("List of available browsers:")
     for browser_number, browser in enumerate(LIST_OF_BROWSERS, 1):
@@ -37,7 +30,50 @@ def open_choosen_browser():
     driver = BROWSER_DRIVER_DICTIONARY[browser](f"./resources/drivers/{browser}driver.exe")
     driver.maximize_window()
 
+def post_offers_olx():
+    global credentials
+    OLX.launch_page(driver)
+    credentials.get_olx_credentials()
+    olx = LoginOLX(driver)
+    olx.login_to_page(credentials.login_olx, credentials.password_olx)
+    del credentials.password_olx
+    time.sleep(3)
+    #TODO: Add posting of offers
+
+def post_offers_allegro_lokalnie():
+    global credentials
+    AllegroLokalnie.launch_page(driver)
+    credentials.get_allegro_lokalnie_credentials()
+    allegro_lokalnie = LoginAllegroLokalnie(driver)
+    allegro_lokalnie.login_to_page(credentials.login_allegro_lokalnie, credentials.password_allegro_lokalnie)
+    del credentials.password_allegro_lokalnie
+    time.sleep(3)
+    #TODO: Add posting of offers
+
+def post_offers_sprzedajemy():
+    global credentials
+    Sprzedajemy.launch_page(driver)
+    credentials.get_sprzedajemy_credentials()
+    sprzedajemy = LoginSprzedajemy(driver)
+    sprzedajemy.login_to_page(credentials.login_sprzedajemy, credentials.password_sprzedajemy)
+    del credentials.password_sprzedajemy
+    time.sleep(3)
+    #TODO: Add posting of offers
+
+def post_offers_vinted():
+    global credentials
+    Vinted.launch_page(driver)
+    credentials.get_vinted_credentials()
+    vinted = LoginVinted(driver)
+    vinted.login_to_page(credentials.login_vinted, credentials.password_vinted)
+    del credentials.password_vinted
+    time.sleep(3)
+    #TODO: Add posting of offers
+
 if __name__ == "__main__":
     prepare_and_check_offers()
-    get_credentials(LIST_OF_SITES)
-    open_choosen_browser()
+    open_browser()
+    post_offers_olx()
+    post_offers_allegro_lokalnie()
+    post_offers_sprzedajemy()
+    post_offers_vinted()
