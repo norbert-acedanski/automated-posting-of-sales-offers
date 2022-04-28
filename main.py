@@ -6,6 +6,7 @@ NAMES_OF_FILES_AND_FOLDERS = ["photos", "properties.json"]
 MANDATORY_PROPERTIES = ["title", "description", "category", "condition", "size", "sex", "price", "brand", "colors", "package size"]
 IMAGE_EXTENSIONS = ["jpeg", "png"]
 SEXES = ["M", "K", "U"]
+CONDITIONS = ["fine", "good", "very good", "new without a tag", "new with a tag"]
 RED_COLOR = '\033[91m'
 ENDC = '\033[0m'
 
@@ -70,6 +71,12 @@ class PostOffer:
             print(f"* {sex}")
         print("")
 
+    def print_conditions_restrictions(self):
+        print("Acceptable list of conditions:")
+        for condition in CONDITIONS:
+            print(f"* {condition}")
+        print("")
+
     def check_title_lengths(self):
         list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
         for offer_path in list_of_offers:
@@ -124,10 +131,9 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" sex properties:")
-            print("Sex of the item: " + properties_data["sex"])
+            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" sex: " + properties_data["sex"])
             if properties_data["sex"] not in SEXES:
-                print(RED_COLOR + "Wrong sex of the item!" + ENDC)
+                print(RED_COLOR + "Wrong sex of the item! Check available sexes!" + ENDC)
             print("")
 
     def check_price(self):
@@ -135,10 +141,19 @@ class PostOffer:
         for offer_path in list_of_offers:
             with open(offer_path + "/properties.json", "r") as properties_file:
                 properties_data = json.load(properties_file)
-            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" price properties:")
-            print("Price of the item: " + str(properties_data["price"]))
+            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" price: " + str(properties_data["price"]))
             if properties_data["price"] < 0:
-                print(RED_COLOR + "Wrong price of the item!" + ENDC)
+                print(RED_COLOR + "Wrong price of the item! Price should be positive, or 0!" + ENDC)
+            print("")
+
+    def check_conditions(self):
+        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
+        for offer_path in list_of_offers:
+            with open(offer_path + "/properties.json", "r") as properties_file:
+                properties_data = json.load(properties_file)
+            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" condition: " + properties_data["condition"])
+            if properties_data["condition"] not in CONDITIONS:
+                print(RED_COLOR + "Wrong condition of the item! Check available conditions!" + ENDC)
             print("")
 
     def print_all_limitations(self):
@@ -146,6 +161,7 @@ class PostOffer:
         self.print_bounds_for_description()
         self.print_photos_restrictions()
         self.print_sexes_restrictions()
+        self.print_conditions_restrictions()
 
     def check_all_properties(self):
         self.check_title_lengths()
@@ -153,6 +169,7 @@ class PostOffer:
         self.check_number_of_photos_and_extension()
         self.check_sex()
         self.check_price()
+        self.check_conditions()
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
