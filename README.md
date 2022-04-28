@@ -26,6 +26,7 @@ It is handy to check these kinds of information before starting the process of a
 # To Do:
 - add method, that checks the colors of the item
 - add method, that checks the category of the item (later if the list of categories is stored)
+- add method, that checks brand
 - add method, that reads login and password for each site
 - add basic login and logout method for each site
 - add login and logout tests
