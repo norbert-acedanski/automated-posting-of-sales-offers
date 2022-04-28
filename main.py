@@ -4,7 +4,9 @@ import json
 OFFERS_FOLDER_NAME = "offers_to_post"
 NAMES_OF_FILES_AND_FOLDERS = ["photos", "properties.json"]
 MANDATORY_PROPERTIES = ["title", "description", "category", "condition", "size", "sex", "price", "brand", "colors", "package size"]
-IMAGE_FORMATS = ["jpeg", "png"]
+IMAGE_EXTENSIONS = ["jpeg", "png"]
+RED_COLOR = '\033[91m'
+ENDC = '\033[0m'
 
 class PostOffer:
     def __init__(self):
@@ -23,9 +25,11 @@ class PostOffer:
                 }
         self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50}, "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
         self.description_boundaries = {"OLX": {"min": 80, "max": 9000}, "Allegro Lokalnie": {"min": 1, "max": 3000}, "Sprzedajemy": {"min": 1, "max": 6000}, "Vinted": {"min": 5, "max": 3000}}
-
+        self.number_of_photos_boundaries = {"OLX": {"min": 1, "max": 8}, "Allegro Lokalnie": {"min": 1, "max": 15}, "Sprzedajemy": {"min": 1, "max": 12}, "Vinted": {"min": 1, "max": 20}}
+    
     def add_offer_folders_with_photos(self, offer_list: list):
         folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
+        os.mkdir(folder_path)
         for offer in offer_list:
             os.mkdir(folder_path + offer + "/")
             os.mkdir(folder_path + offer + "/" + "photos/")
@@ -38,15 +42,25 @@ class PostOffer:
                     json.dump(self.json_data, properties_file)
     
     def print_bounds_for_title(self):
-        print("Title bounds [characters]:")
+        print("Title limits [characters]:")
         for key, value in self.title_boundaries.items():
             print(key + ": min - " + str(value["min"]) + ", max - " + str(value["max"]))
         print("")
 
     def print_bounds_for_description(self):
-        print("Description bounds [characters]:")
+        print("Description limits [characters]:")
         for key, value in self.description_boundaries.items():
             print(key + ": min - " + str(value["min"]) + ", max - " + str(value["max"]))
+        print("")
+    
+    def print_photos_restrictions(self):
+        print("Number of photos limits:")
+        for key, value in self.number_of_photos_boundaries.items():
+            print(key + ": min - " + str(value["min"]) + ", max - " + str(value["max"]))
+        print("")
+        print("Acceptable photos extensions:")
+        for extension in IMAGE_EXTENSIONS:
+            print("* " + extension)
         print("")
 
     def check_title_lengths(self):
@@ -57,11 +71,11 @@ class PostOffer:
             print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" title properties:")
             print("Title length: " + str(len(properties_data["title"])))
             for key, value in self.title_boundaries.items():
-                print(key, end="")
-                if value["min"] < len(properties_data["title"]) < value["max"]:
-                    print(": In bounds")
+                print(key + ": ", end="")
+                if value["min"] <= len(properties_data["title"]) <= value["max"]:
+                    print("In bounds")
                 else:
-                    print(": Not in bounds")
+                    print(RED_COLOR + "Not in bounds" + ENDC)
                     print("Bounds for " + key + " are: min - " + str(value["min"]) + ", max - " + str(value["max"]))
             print("")
 
@@ -73,13 +87,31 @@ class PostOffer:
             print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" description properties:")
             print("Description length: " + str(len(properties_data["description"])))
             for key, value in self.description_boundaries.items():
-                print(key, end="")
-                if value["min"] < len(properties_data["description"]) < value["max"]:
-                    print(": In bounds")
+                print(key + ": ", end="")
+                if value["min"] <= len(properties_data["description"]) <= value["max"]:
+                    print("In bounds")
                 else:
-                    print(": Not in bounds")
+                    print(RED_COLOR + "Not in bounds" + ENDC)
                     print("Bounds for " + key + " are: min - " + str(value["min"]) + ", max - " + str(value["max"]))
             print("")
+    
+    def check_number_of_photos_and_extension(self):
+        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
+        for offer_path in list_of_offers:
+            found_photos = os.listdir(offer_path + "/photos/")
+            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" photos properties:")
+            print("Number of photos: " + str(len(found_photos)))
+            for key, value in self.number_of_photos_boundaries.items():
+                print(key + ": ", end="")
+                if value["min"] <= len(found_photos) <= value["max"]:
+                    print("In bounds")
+                else:
+                    print(RED_COLOR + "Not in bounds" + ENDC)
+                    print("Bounds for " + key + " are: min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            if any([not photo.endswith("." + IMAGE_EXTENSIONS[0]) or not photo.endswith("." + IMAGE_EXTENSIONS[0]) for photo in found_photos]):
+                print(RED_COLOR + "Wrong extension of some of the photos! Check available photos extensions!" + ENDC)
+            print("")
+    
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
@@ -87,5 +119,7 @@ if __name__ == "__main__":
     offer_poster.add_properties_file_to_each_offer_folder()
     offer_poster.print_bounds_for_title()
     offer_poster.print_bounds_for_description()
+    offer_poster.print_photos_restrictions()
     offer_poster.check_title_lengths()
     offer_poster.check_description_lengths()
+    offer_poster.check_number_of_photos_and_extension()
