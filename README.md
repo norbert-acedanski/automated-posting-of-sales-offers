@@ -20,12 +20,11 @@ It is handy to check these kinds of information before starting the process of a
 2. In **offers_to_post** directory, all folders for desired items should be placed (name is not important). In these folders, there should be folder for photos and file with proper information about the item. To do that, use ***add_offer_folders_with_photos_and_properties*** method, that accepts the list of the folder names and then - ***add_properties_file_to_each_offer_folder***.
 3. In each offer, modify **properties.json** file with the proper information. All properties should be included, otherwise the script will fail.
 4. Add photos of items to .\photos\ directories in all folders.
-5. To see what are limitations, when posting an offer in a particular site, use ***print_all_limitations*** to print all limitations or use ***print_bounds_for_title***, ***print_bounds_for_description***, ***print_photos_restrictions***, ***print_sexes_restrictions***, ***print_conditions_restrictions*** methods. The result will be printed in the terminal.
-6. Check, whether the information included in **properties.json** file and photos meet the expectations of the sites the script will post them in. To do that, use ***check_all_properties*** to go through all offers you created and check each individually or use ***check_title_lengths***, ***check_description_lengths***, ***check_number_of_photos_and_extension***, ***check_sex***, ***check_price***, ***check_conditions*** methods. The result will be printed in the terminal.
+5. To see what are limitations, when posting an offer in a particular site, use ***print_all_limitations*** to print all limitations or use ***print_bounds_for_title***, ***print_bounds_for_description***, ***print_photos_restrictions***, ***print_sexes_restrictions***, ***print_conditions_restrictions***, ***print_package_size_restrictions*** methods. The result will be printed in the terminal.
+6. Check, whether the information included in **properties.json** file and photos meet the expectations of the sites the script will post them in. To do that, use ***check_all_properties*** to go through all offers you created and check each individually or use ***check_title_lengths***, ***check_description_lengths***, ***check_number_of_photos_and_extension***, ***check_sex***, ***check_price***, ***check_conditions***, ***check_package_sizes*** methods. The result will be printed in the terminal.
 
 # To Do:
 - add method, that checks the colors of the item
-- add method, that checks the package size of the item
 - add method, that checks the category of the item (later if the list of categories is stored)
 - add method, that reads login and password for each site
 - add basic login and logout method for each site

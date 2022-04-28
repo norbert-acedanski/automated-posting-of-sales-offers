@@ -7,6 +7,7 @@ MANDATORY_PROPERTIES = ["title", "description", "category", "condition", "size",
 IMAGE_EXTENSIONS = ["jpeg", "png"]
 SEXES = ["M", "K", "U"]
 CONDITIONS = ["fine", "good", "very good", "new without a tag", "new with a tag"]
+PACKAGE_SIZES = ["S", "M", "L"]
 BLUE = '\033[94m'
 GREEN = '\033[92m'
 YELLOW = '\033[93m'
@@ -78,6 +79,12 @@ class PostOffer:
         print(GREEN + "Acceptable list of conditions:" + ENDC)
         for condition in CONDITIONS:
             print("* " + BLUE + condition + ENDC)
+        print("")
+
+    def print_package_size_restrictions(self):
+        print(GREEN + "Acceptable sizes of the package:" + ENDC)
+        for package_size in PACKAGE_SIZES:
+            print("* " + BLUE + package_size + ENDC)
         print("")
 
     def check_title_lengths(self):
@@ -159,12 +166,23 @@ class PostOffer:
                 print(RED_COLOR + "Wrong condition of the item! Check available conditions!" + ENDC)
             print("")
 
+    def check_package_sizes(self):
+        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
+        for offer_path in list_of_offers:
+            with open(offer_path + "/properties.json", "r") as properties_file:
+                properties_data = json.load(properties_file)
+            print("Offer \"" + GREEN + offer_path[offer_path.rfind("/") + 1:] + ENDC + "\" package size: " + BLUE + properties_data["package size"] + ENDC)
+            if properties_data["package size"] not in PACKAGE_SIZES:
+                print(RED_COLOR + "Wrong package size! Check available package sizes!" + ENDC)
+            print("")
+
     def print_all_limitations(self):
         self.print_bounds_for_title()
         self.print_bounds_for_description()
         self.print_photos_restrictions()
         self.print_sexes_restrictions()
         self.print_conditions_restrictions()
+        self.print_package_size_restrictions()
 
     def check_all_properties(self):
         self.check_title_lengths()
@@ -173,10 +191,11 @@ class PostOffer:
         self.check_sex()
         self.check_price()
         self.check_conditions()
+        self.check_package_sizes()
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
-    # offer_poster.add_offer_folders_with_photos(["Sample offer 1", "Sample offer 2"])
-    # offer_poster.add_properties_file_to_each_offer_folder()
+    offer_poster.add_offer_folders_with_photos(["Sample offer 1", "Sample offer 2"])
+    offer_poster.add_properties_file_to_each_offer_folder()
     offer_poster.print_all_limitations()
     offer_poster.check_all_properties()
