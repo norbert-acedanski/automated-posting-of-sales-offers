@@ -2,7 +2,7 @@ import os
 import json
 import pytest
 import shutil
-from main import OFFERS_FOLDER_NAME, NAMES_OF_FILES_AND_FOLDERS, MANDATORY_PROPERTIES, IMAGE_EXTENSIONS
+from prepare_and_check_offers import OFFERS_FOLDER_NAME, NAMES_OF_FILES_AND_FOLDERS, MANDATORY_PROPERTIES, IMAGE_EXTENSIONS
 
 
 def test_all_subfolders_and_files():
