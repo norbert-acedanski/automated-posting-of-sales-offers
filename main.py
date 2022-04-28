@@ -5,6 +5,7 @@ OFFERS_FOLDER_NAME = "offers_to_post"
 NAMES_OF_FILES_AND_FOLDERS = ["photos", "properties.json"]
 MANDATORY_PROPERTIES = ["title", "description", "category", "condition", "size", "sex", "price", "brand", "colors", "package size"]
 IMAGE_EXTENSIONS = ["jpeg", "png"]
+SEXES = ["M", "K", "U"]
 RED_COLOR = '\033[91m'
 ENDC = '\033[0m'
 
@@ -44,23 +45,29 @@ class PostOffer:
     def print_bounds_for_title(self):
         print("Title limits [characters]:")
         for key, value in self.title_boundaries.items():
-            print(key + ": min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            print(f"{key}: min - " + str(value["min"]) + ", max - " + str(value["max"]))
         print("")
 
     def print_bounds_for_description(self):
         print("Description limits [characters]:")
         for key, value in self.description_boundaries.items():
-            print(key + ": min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            print(f"{key}: min - " + str(value["min"]) + ", max - " + str(value["max"]))
         print("")
     
     def print_photos_restrictions(self):
         print("Number of photos limits:")
         for key, value in self.number_of_photos_boundaries.items():
-            print(key + ": min - " + str(value["min"]) + ", max - " + str(value["max"]))
+            print(f"{key}: min - " + str(value["min"]) + ", max - " + str(value["max"]))
         print("")
         print("Acceptable photos extensions:")
         for extension in IMAGE_EXTENSIONS:
-            print("* " + extension)
+            print(f"* {extension}")
+        print("")
+
+    def print_sexes_restrictions(self):
+        print("Acceptable sexes marks:")
+        for sex in SEXES:
+            print(f"* {sex}")
         print("")
 
     def check_title_lengths(self):
@@ -111,15 +118,33 @@ class PostOffer:
             if any([not photo.endswith("." + IMAGE_EXTENSIONS[0]) or not photo.endswith("." + IMAGE_EXTENSIONS[0]) for photo in found_photos]):
                 print(RED_COLOR + "Wrong extension of some of the photos! Check available photos extensions!" + ENDC)
             print("")
-    
+
+    def check_sex_of_the_item(self):
+        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
+        for offer_path in list_of_offers:
+            with open(offer_path + "/properties.json", "r") as properties_file:
+                properties_data = json.load(properties_file)
+            print("Offer \"" + offer_path[offer_path.rfind("/") + 1:] + "\" sex properties:")
+            print("Sex of the item: " + properties_data["sex"])
+            if properties_data["sex"] not in SEXES:
+                print(RED_COLOR + "Wrong sex of the item!" + ENDC)
+            print("")
+
+    def print_all_limitations(self):
+        self.print_bounds_for_title()
+        self.print_bounds_for_description()
+        self.print_photos_restrictions()
+        self.print_sexes_restrictions()
+
+    def check_all_properties(self):
+        self.check_title_lengths()
+        self.check_description_lengths()
+        self.check_number_of_photos_and_extension()
+        self.check_sex_of_the_item()
 
 if __name__ == "__main__":
     offer_poster = PostOffer()
     offer_poster.add_offer_folders_with_photos(["Sample offer 1", "Sample offer 2"])
     offer_poster.add_properties_file_to_each_offer_folder()
-    offer_poster.print_bounds_for_title()
-    offer_poster.print_bounds_for_description()
-    offer_poster.print_photos_restrictions()
-    offer_poster.check_title_lengths()
-    offer_poster.check_description_lengths()
-    offer_poster.check_number_of_photos_and_extension()
+    offer_poster.print_all_limitations()
+    offer_poster.check_all_properties()
