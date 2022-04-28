@@ -22,13 +22,13 @@ It is handy to check these kinds of information before starting the process of a
 4. Add photos of items to .\photos\ directories in all folders.
 5. To see what are limitations, when posting an offer in a particular site, use ***print_all_limitations*** to print all limitations or use ***print_bounds_for_title***, ***print_bounds_for_description***, ***print_photos_restrictions***, ***print_sexes_restrictions***, ***print_conditions_restrictions***, ***print_package_size_restrictions*** methods. The result will be printed in the terminal.
 6. Check, whether the information included in **properties.json** file and photos meet the expectations of the sites the script will post them in. To do that, use ***check_all_properties*** to go through all offers you created and check each individually or use ***check_title_lengths***, ***check_description_lengths***, ***check_number_of_photos_and_extension***, ***check_sex***, ***check_price***, ***check_conditions***, ***check_package_sizes*** methods. The result will be printed in the terminal.
+7. Open browser with ***open_browser*** function. You will be asked, which browser to start (currently Chrome is tested).
+8. Choose, on which sites you want to post your offers with 4 functions: ***post_offers_olx***, ***post_offers_allegro_lokalnie***, ***post_offers_sprzedajemy***, ***post_offers_vinted***. You will be asked credentials to each account you choose. Password will be deleted from the memory after succesfull login. Currently only login and logout works, posting will be implemented soon.
 
 # To Do:
 - add method, that checks the colors of the item
 - add method, that checks the category of the item (later if the list of categories is stored)
 - add method, that checks brand
-- add method, that reads login and password for each site
-- add basic login and logout method for each site
 - add login and logout tests
 - add checking proper site tests
 - add posting method for each site

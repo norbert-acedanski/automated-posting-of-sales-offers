@@ -1,6 +1,7 @@
 import time
 
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
+from selenium.webdriver.common.action_chains import ActionChains
 
 class LoginOLX:
     
@@ -13,7 +14,8 @@ class LoginOLX:
     textbox_password_2_xpath = "//input[@name='password']"
     button_login_1_xpath = "//button[@type='submit']"
     button_login_2_xpath = "//button[@id='se_userLogin']"
-    button_logout_xpath = "//a[text()='Wyloguj']"
+    dropdown_menu_xpath = "//a[@class='userbox-login tdnone']"
+    button_logout_xpath = "//a[@id='login-box-logout']"
     
     def __init__(self, driver):
         self.driver = driver
@@ -50,7 +52,15 @@ class LoginOLX:
             self.driver.find_element_by_xpath(self.button_login_2_xpath).click()
 
     def click_logout(self):
-        self.driver.find_element_by_xpath(self.button_logout_xpath).click()
+        try:
+            time.sleep(1)
+            self.driver.find_element_by_xpath(self.button_logout_xpath).click()
+        except ElementNotInteractableException:
+            time.sleep(1)
+            dropdown_menu = self.driver.find_element_by_xpath(self.dropdown_menu_xpath)
+            action_chains = ActionChains(self.driver)
+            action_chains.move_to_element(dropdown_menu).perform()
+            self.driver.find_element_by_xpath(self.button_logout_xpath).click()
 
     def login_to_page(self, login, password):
         self.accept_cookies()
@@ -129,6 +139,7 @@ class LoginSprzedajemy:
     textbox_email_xpath = "//input[@type='email']"
     textbox_password_xpath = "//input[@type='password']"
     button_login_xpath = "//button[@type='submit']"
+    dropdown_menu_xpath = "//div[@class] / span //strong /parent::*/parent::*"
     button_logout_xpath = "//a[@class='logout']"
     
     def __init__(self, driver):
@@ -152,6 +163,7 @@ class LoginSprzedajemy:
         self.driver.find_element_by_xpath(self.button_login_xpath).click()
 
     def click_logout(self):
+        self.driver.find_element_by_xpath(self.dropdown_menu_xpath).click()
         self.driver.find_element_by_xpath(self.button_logout_xpath).click()
 
     def login_to_page(self, login, password):
@@ -169,6 +181,7 @@ class LoginVinted:
     textbox_login_xpath = "//input[@id='username']"
     textbox_password_xpath = "//input[@id='password']"
     button_login_xpath = "//span[text()='Kontynuuj']"
+    dropdown_menu_xpath = "//figure[@class]"
     button_logout_xpath = "//a[text()='Wyloguj się']"
     button_recaptcha_xpath = "//div[@class='recaptcha-checkbox-border']"
     
@@ -195,6 +208,7 @@ class LoginVinted:
         self.driver.find_element_by_xpath(self.button_login_xpath).click()
 
     def click_logout(self):
+        self.driver.find_element_by_xpath(self.dropdown_menu_xpath).click()
         self.driver.find_element_by_xpath(self.button_logout_xpath).click()
 
     def recaptcha(self):

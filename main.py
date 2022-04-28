@@ -39,6 +39,7 @@ def post_offers_olx():
     del credentials.password_olx
     time.sleep(3)
     #TODO: Add posting of offers
+    olx.click_logout()
 
 def post_offers_allegro_lokalnie():
     global credentials
@@ -49,6 +50,7 @@ def post_offers_allegro_lokalnie():
     del credentials.password_allegro_lokalnie
     time.sleep(3)
     #TODO: Add posting of offers
+    allegro_lokalnie.click_logout()
 
 def post_offers_sprzedajemy():
     global credentials
@@ -59,6 +61,7 @@ def post_offers_sprzedajemy():
     del credentials.password_sprzedajemy
     time.sleep(3)
     #TODO: Add posting of offers
+    sprzedajemy.click_logout()
 
 def post_offers_vinted():
     global credentials
@@ -69,6 +72,7 @@ def post_offers_vinted():
     del credentials.password_vinted
     time.sleep(3)
     #TODO: Add posting of offers
+    vinted.click_logout()
 
 if __name__ == "__main__":
     prepare_and_check_offers()
