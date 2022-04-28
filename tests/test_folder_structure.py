@@ -2,7 +2,7 @@ import os
 import json
 import pytest
 import shutil
-from main import OFFERS_FOLDER_NAME, NAMES_OF_FILES_AND_FOLDERS, MANDATORY_PROPERTIES, IMAGE_FORMATS
+from main import OFFERS_FOLDER_NAME, NAMES_OF_FILES_AND_FOLDERS, MANDATORY_PROPERTIES, IMAGE_EXTENSIONS
 
 
 def test_all_subfolders_and_files():
@@ -39,7 +39,7 @@ def test_all_subfolders_and_files():
         for name in NAMES_OF_FILES_AND_FOLDERS:
             assert name in files_in_current_offer
         photos_path = current_offer_path + NAMES_OF_FILES_AND_FOLDERS[0] + "/"
-        files_in_photo_directory = [file for file in os.listdir(photos_path) if file.endswith("." + IMAGE_FORMATS[0]) or file.endswith("." + IMAGE_FORMATS[1])]
+        files_in_photo_directory = [file for file in os.listdir(photos_path) if file.endswith("." + IMAGE_EXTENSIONS[0]) or file.endswith("." + IMAGE_EXTENSIONS[1])]
         number_of_photos = len(files_in_photo_directory)
         assert number_of_photos > 0 and number_of_photos < 9
         with open(current_offer_path + NAMES_OF_FILES_AND_FOLDERS[1], "r") as json_file:
