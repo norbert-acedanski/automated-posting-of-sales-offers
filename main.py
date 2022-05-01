@@ -8,6 +8,7 @@ from opening_sites import OpenOLX, OpenAllegroLokalnie, OpenSprzedajemy, OpenVin
 LIST_OF_BROWSERS = ["chrome", "edge", "firefox", "ie"]
 LIST_OF_DRIVERS = [webdriver.Chrome, webdriver.Edge, webdriver.Firefox, webdriver.Ie]
 BROWSER_DRIVER_DICTIONARY = {browser: driver for browser, driver in zip(LIST_OF_BROWSERS, LIST_OF_DRIVERS)}
+PRIVATE_OFFER, BUSINESS_OFFER = "Prywatne", "Firmowe"
 driver = None
 credentials = Credentials()
 
