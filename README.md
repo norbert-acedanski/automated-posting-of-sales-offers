@@ -26,6 +26,7 @@ It is handy to check these kinds of information before starting the process of a
 8. Choose, on which sites you want to post your offers with 4 functions: ***post_offers_olx***, ***post_offers_allegro_lokalnie***, ***post_offers_sprzedajemy***, ***post_offers_vinted***. You will be asked credentials to each account you choose. Password will be deleted from the memory after succesfull login. Currently only login and logout works, posting will be implemented soon.
 
 # To Do:
+- add list of colors, brands, materials, sexes, condition etc to OLX
 - add method, that checks the colors of the item
 - add method, that checks the category of the item (later if the list of categories is stored)
 - add method, that checks brand
