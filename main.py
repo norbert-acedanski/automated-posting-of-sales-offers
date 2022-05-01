@@ -3,7 +3,7 @@ from selenium import webdriver
 from credentials import Credentials
 from prepare_and_check_offers import PrepareAndCheckOffers
 from logging_to_sites import LoginOLX, LoginAllegroLokalnie, LoginSprzedajemy, LoginVinted
-from opening_sites import OLX, AllegroLokalnie, Sprzedajemy, Vinted
+from opening_sites import OpenOLX, OpenAllegroLokalnie, OpenSprzedajemy, OpenVinted
 
 LIST_OF_BROWSERS = ["chrome", "edge", "firefox", "ie"]
 LIST_OF_DRIVERS = [webdriver.Chrome, webdriver.Edge, webdriver.Firefox, webdriver.Ie]
@@ -32,7 +32,7 @@ def open_browser():
 
 def post_offers_olx():
     global credentials
-    OLX.launch_page(driver)
+    OpenOLX.launch_page(driver)
     credentials.get_olx_credentials()
     olx = LoginOLX(driver)
     olx.login_to_page(credentials.login_olx, credentials.password_olx)
@@ -43,7 +43,7 @@ def post_offers_olx():
 
 def post_offers_allegro_lokalnie():
     global credentials
-    AllegroLokalnie.launch_page(driver)
+    OpenAllegroLokalnie.launch_page(driver)
     credentials.get_allegro_lokalnie_credentials()
     allegro_lokalnie = LoginAllegroLokalnie(driver)
     allegro_lokalnie.login_to_page(credentials.login_allegro_lokalnie, credentials.password_allegro_lokalnie)
@@ -54,7 +54,7 @@ def post_offers_allegro_lokalnie():
 
 def post_offers_sprzedajemy():
     global credentials
-    Sprzedajemy.launch_page(driver)
+    OpenSprzedajemy.launch_page(driver)
     credentials.get_sprzedajemy_credentials()
     sprzedajemy = LoginSprzedajemy(driver)
     sprzedajemy.login_to_page(credentials.login_sprzedajemy, credentials.password_sprzedajemy)
@@ -65,7 +65,7 @@ def post_offers_sprzedajemy():
 
 def post_offers_vinted():
     global credentials
-    Vinted.launch_page(driver)
+    OpenVinted.launch_page(driver)
     credentials.get_vinted_credentials()
     vinted = LoginVinted(driver)
     vinted.login_to_page(credentials.login_vinted, credentials.password_vinted)
