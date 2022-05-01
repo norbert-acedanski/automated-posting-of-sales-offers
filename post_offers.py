@@ -1,3 +1,6 @@
+from contextlib import suppress
+from selenium.common.exceptions import NoSuchElementException
+
 from main import PRIVATE_OFFER
 
 class PostOLX():
@@ -12,11 +15,14 @@ class PostOLX():
 
     button_offer_kind_xpath = "//button[text()='choice']"
 
-    dropdown_menu_state_xpath = "//label[contains(text(), 'Stan')] //.. //button[@data-testid='dropdown-expand-button']"
-    dropdown_menu_state_choice_xpath = "//a[text()='choice']"
+    dropdown_menu_condition_xpath = "//label[contains(text(), 'Stan')] //.. //button[@data-testid='dropdown-expand-button']"
+    dropdown_menu_condition_choice_xpath = "//a[text()='choice']"
 
     dropdown_menu_size_xpath = "//label[contains(text(), 'Rozmiar')] //.. //button[@data-testid='dropdown-expand-button']"
     dropdown_menu_size_choice_xpath = "//a[text()='choice']"
+
+    dropdown_menu_sex_xpath = "//label[contains(text(), 'Płeć')] //.. //button[@data-testid='dropdown-expand-button']"
+    dropdown_menu_sex_choice_xpath = "//a[text()='choice']"
 
     dropdown_menu_color_xpath = "//label[text()='Kolor'] //.. //button[@data-testid='dropdown-expand-button']"
     dropdown_menu_color_choice_xpath = "//ul[@data-testid='dropdown-list'] //*[text()='choice']"
@@ -50,7 +56,7 @@ class PostOLX():
     def add_description(self, description):
         self.driver.find_element_by_xpath(self.textfield_description_xpath).send_keys(description)
 
-    def add_description(self, price):
+    def add_price(self, price):
         self.driver.find_element_by_xpath(self.textfield_price_xpath).send_keys(price)
 
     def switch_negotiable(self, negotiable=False):
@@ -60,25 +66,47 @@ class PostOLX():
     def set_offer_kind(self, offer_kind=PRIVATE_OFFER):
         self.driver.find_element_by_xpath(self.button_offer_kind_xpath.replace("choice", offer_kind)).click()
 
-    def set_offer_state(self, offer_state):
-        self.driver.find_element_by_xpath(self.dropdown_menu_state_xpath).click()
-        self.driver.find_element_by_xpath(self.dropdown_menu_state_choice_xpath.replace("choice", offer_state)).click()
+    def set_offer_condition(self, offer_condition):
+        try:
+            self.driver.find_element_by_xpath(self.dropdown_menu_condition_xpath).click()
+            self.driver.find_element_by_xpath(self.dropdown_menu_condition_choice_xpath.replace("choice", offer_condition)).click()
+        except NoSuchElementException:
+            pass
 
     def set_offer_size(self, offer_size):
-        self.driver.find_element_by_xpath(self.dropdown_menu_size_xpath).click()
-        self.driver.find_element_by_xpath(self.dropdown_menu_size_choice_xpath.replace("choice", offer_size)).click()
+        try:
+            self.driver.find_element_by_xpath(self.dropdown_menu_size_xpath).click()
+            self.driver.find_element_by_xpath(self.dropdown_menu_size_choice_xpath.replace("choice", offer_size)).click()
+        except NoSuchElementException:
+            pass
+
+    def set_offer_sex(self, offer_sex):
+        try:
+            self.driver.find_element_by_xpath(self.dropdown_menu_sex_xpath).click()
+            self.driver.find_element_by_xpath(self.dropdown_menu_sex_choice_xpath.replace("choice", offer_sex)).click()
+        except NoSuchElementException:
+            pass
 
     def set_offer_color(self, offer_color):
-        self.driver.find_element_by_xpath(self.dropdown_menu_color_xpath).click()
-        self.driver.find_element_by_xpath(self.dropdown_menu_color_choice_xpath.replace("choice", offer_color)).click()
+        try:
+            self.driver.find_element_by_xpath(self.dropdown_menu_color_xpath).click()
+            self.driver.find_element_by_xpath(self.dropdown_menu_color_choice_xpath.replace("choice", offer_color)).click()
+        except NoSuchElementException:
+            pass
 
     def set_offer_brand(self, offer_brand):
-        self.driver.find_element_by_xpath(self.dropdown_menu_brand_xpath).click()
-        self.driver.find_element_by_xpath(self.dropdown_menu_brand_choice_xpath.replace("choice", offer_brand)).click()
+        try:
+            self.driver.find_element_by_xpath(self.dropdown_menu_brand_xpath).click()
+            self.driver.find_element_by_xpath(self.dropdown_menu_brand_choice_xpath.replace("choice", offer_brand)).click()
+        except NoSuchElementException:
+            pass
 
     def set_offer_material(self, offer_material):
-        self.driver.find_element_by_xpath(self.dropdown_menu_material_xpath).click()
-        self.driver.find_element_by_xpath(self.dropdown_menu_material_choice_xpath.replace("choice", offer_material)).click()
+        try:
+            self.driver.find_element_by_xpath(self.dropdown_menu_material_xpath).click()
+            self.driver.find_element_by_xpath(self.dropdown_menu_material_choice_xpath.replace("choice", offer_material)).click()
+        except NoSuchElementException:
+            pass
 
     def switch_auto_renewal(self, renew=True):
         if renew:
@@ -86,6 +114,32 @@ class PostOLX():
 
     def click_add_offer(self):
         self.driver.find_element_by_xpath(self.button_add_offer_xpath).click()
+
+    def fill_offer_with_data(self, data: dict, path, negotiable_price=False, offer_kind=PRIVATE_OFFER, auto_renewal=True):
+        title = data["title"]
+        category = data["category"]
+        description = data["description"]
+        price = data["price"]
+        with suppress(KeyError): condition = data["condition"]
+        with suppress(KeyError): size = data["size"]
+        with suppress(KeyError): sex = data["sex"]
+        with suppress(KeyError): color = data["color"][0]
+        with suppress(KeyError): brand = data["brand"]
+        with suppress(KeyError): material = data["material"]
+        self.add_title(title)
+        self.add_category(category)
+        self.add_photos(path)
+        self.add_description(description)
+        self.add_price(price)
+        self.switch_negotiable(negotiable_price)
+        self.set_offer_kind(offer_kind)
+        self.set_offer_condition(condition)
+        self.set_offer_size(size)
+        self.set_offer_sex(sex)
+        self.set_offer_color(color)
+        self.set_offer_brand(brand)
+        self.set_offer_material(material)
+        self.switch_auto_renewal(auto_renewal)
 
 class PostAllegroLokalnie():
     pass
