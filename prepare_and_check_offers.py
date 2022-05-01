@@ -27,6 +27,7 @@ class PrepareAndCheckOffers:
                  "price": 10,
                  "brand": "Adidas/Champion/House Brand/None",
                  "colors": ["black", "white", "maximum of two colors in this list, with the most important as the first element"],
+                 "material": "akryl/wool etc.",
                  "package size": "S/M/L (S - small, M - medium, L - large)"
                 }
         self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50}, "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
