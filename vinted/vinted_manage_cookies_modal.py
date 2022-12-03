@@ -11,6 +11,7 @@ MODALS_TIMEOUT = 10
 
 class VintedManageCookiesModal:
     modal_xpath = "//div[@id='onetrust-pc-sdk']"
+    x_button_xpath = "//button[@id='close-pc-btn-handler']"
     allow_all_cookies_xpath = "//button[@id='accept-recommended-btn-handler']"
     confirm_my_choices_xpath = "//button[]"
     cookie_xpath = "//h4[text()='{}']/following-sibling::div//input"
@@ -19,7 +20,10 @@ class VintedManageCookiesModal:
         self.driver = driver
         self.wait_for_essentials()
 
-    def click_allow_all_cookies_button(self):
+    def click_x_button(self) -> None:
+        self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.x_button_xpath).click()
+
+    def click_allow_all_cookies_button(self) -> None:
         self.driver.find_element(by=By, value=self.modal_xpath + self.allow_all_cookies_xpath).click()
 
     def select_cookies_to_accept(self, cookies: List[str]) -> None:
@@ -28,7 +32,7 @@ class VintedManageCookiesModal:
             if current_cookie_element.get_attribute("aria-checked") == "false":
                 current_cookie_element.click()
 
-    def click_confirm_my_choices_button(self):
+    def click_confirm_my_choices_button(self) -> None:
         self.driver.find_element(by=By, value=self.modal_xpath + self.confirm_my_choices_xpath).click()
 
     def wait_for_essentials(self) -> None:
