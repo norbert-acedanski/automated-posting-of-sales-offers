@@ -9,7 +9,7 @@ from vinted.vinted_constants import MODALS_TIMEOUT
 from vinted.vinted_main_page import VintedMainPage
 
 
-class VintedLoginModal:
+class VintedLoginByEmailModal:
     modal_xpath = "//div[contains(@class, 'ReactModal__Content--after-open')]"
     x_button_xpath = "//span[@data-icon-name='x']//ancestor::button"
     email_or_profile_name_textfield_xpath = "//input[@id='username']"
