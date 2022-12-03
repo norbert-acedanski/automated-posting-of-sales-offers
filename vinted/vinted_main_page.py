@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import PAGES_TIMEOUT
 from vinted.vinted_manage_cookies_modal import VintedManageCookiesModal
+from vinted.vinted_sell_item_page import VintedSellItemPage
 from vinted.vinter_register_login_modal import VintedRegisterLoginModal
 
 
@@ -53,6 +54,6 @@ class VintedMainPage:
         self.driver.find_element(by=By.XPATH, value=self.main_page_xpath + self.register_login_button_xpath).click()
         return VintedRegisterLoginModal(self.driver)
 
-    def click_sell_button(self) -> VintedSellPage:
+    def click_sell_button(self) -> VintedSellItemPage:
         self.driver.find_element(by=By.XPATH, value=self.main_page_xpath + self.sell_button_xpath).click()
-        return VintedSellPage(self.driver)
+        return VintedSellItemPage(self.driver)
