@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -19,7 +19,7 @@ class VintedManageCookiesModal:
         self.driver = driver
         self.wait_for_essentials()
 
-    def wait_for_essentials(self) -> None:
+    def wait_for_essentials(self, timeout: Union[float, int] = MODALS_TIMEOUT) -> None:
         for element_xpath in [self.x_button_xpath, self.allow_all_cookies_xpath, self.confirm_my_choices_xpath]:
             WebDriverWait(self.driver, timeout=MODALS_TIMEOUT).\
                 until(EC.element_to_be_clickable((By.XPATH, self.modal_xpath + element_xpath)))
