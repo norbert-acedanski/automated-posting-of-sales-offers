@@ -12,7 +12,7 @@ from vinted.vinter_register_login_modal import VintedRegisterLoginModal
 
 
 class VintedMainPage:
-    main_page_xpath = "//div[contains(@id, 'InAppMessage')]/parent::body"
+    page_xpath = "//div[contains(@id, 'InAppMessage')]/parent::body"
     vinted_logo_xpath = "//div[@data-testid='header-logo-id']"
     search_bar_xpath = "//input[@id='search_text']"
     register_login_button_xpath = "//a[@role='button' and @data-testid='header--login-button']"
@@ -32,18 +32,18 @@ class VintedMainPage:
         for element_xpath in [self.vinted_logo_xpath, self.search_bar_xpath, self.sell_button_xpath,
                               self.tabs_component_xpath]:
             WebDriverWait(self.driver, timeout=timeout).\
-                until(EC.element_to_be_clickable((By.XPATH, self.main_page_xpath + element_xpath)))
+                until(EC.element_to_be_clickable((By.XPATH, self.page_xpath + element_xpath)))
 
     def wait_for_cookies(self) -> None:
         for xpath_format in ["accept", "reject", "manage"]:
             WebDriverWait(self.driver, timeout=PAGES_TIMEOUT).\
-                until(EC.element_to_be_clickable((By.XPATH, self.main_page_xpath + self.cookie_buttons_component_xpath
+                until(EC.element_to_be_clickable((By.XPATH, self.page_xpath + self.cookie_buttons_component_xpath
                                                   + self.cookie_button_xpath.format(xpath_format))))
 
     def choose_cookies_option(self, option: Literal["accept", "reject", "manage"]) \
             -> Union[None, VintedManageCookiesModal]:
         option_xpath_dict = {"accept": "accept-btn", "reject": "reject-all", "manage": "pc-btn"}
-        self.driver.find_element(by=By.XPATH, value=self.main_page_xpath + self.cookie_buttons_component_xpath +
+        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.cookie_buttons_component_xpath +
                                                     self.cookie_button_xpath.format(option_xpath_dict[option])).click()
         if option == "manage":
             return VintedManageCookiesModal(self.driver)
@@ -51,9 +51,9 @@ class VintedMainPage:
             self.wait_for_essentials()
 
     def click_register_login_button(self) -> VintedRegisterLoginModal:
-        self.driver.find_element(by=By.XPATH, value=self.main_page_xpath + self.register_login_button_xpath).click()
+        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.register_login_button_xpath).click()
         return VintedRegisterLoginModal(self.driver)
 
     def click_sell_button(self) -> VintedSellItemPage:
-        self.driver.find_element(by=By.XPATH, value=self.main_page_xpath + self.sell_button_xpath).click()
+        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.sell_button_xpath).click()
         return VintedSellItemPage(self.driver)
