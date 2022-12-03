@@ -10,6 +10,7 @@ from vinted.vinted_constants import MODALS_TIMEOUT
 
 class VintedRegisterByEmailModal:
     modal_xpath = "//div[contains(@class, 'ReactModal__Content--after-open')]"
+    x_button_xpath = "//span[@data-icon-name='x']//ancestor::button"
     full_name_textfield_xpath = "//input[@id='realName']"
     profile_name_textfield_xpath = "//input[@id='login']"
     email_textfield_xpath = "//input[@id='email']"
@@ -23,7 +24,7 @@ class VintedRegisterByEmailModal:
         self.wait_for_essentials()
 
     def wait_for_essentials(self, timeout: Union[float, int] = MODALS_TIMEOUT) -> None:
-        for element_xpath in [self.full_name_textfield_xpath, self.profile_name_textfield_xpath,
+        for element_xpath in [self.x_button_xpath, self.full_name_textfield_xpath, self.profile_name_textfield_xpath,
                               self.email_textfield_xpath, self.password_textfield_xpath,
                               self.want_to_receive_personalized_offers_checkbox_xpath,
                               self.confirm_regulations_checkbox_xpath, self.continue_button_xpath]:
