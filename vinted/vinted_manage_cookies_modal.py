@@ -20,6 +20,11 @@ class VintedManageCookiesModal:
         self.driver = driver
         self.wait_for_essentials()
 
+    def wait_for_essentials(self) -> None:
+        for element_xpath in [self.x_button_xpath, self.allow_all_cookies_xpath, self.confirm_my_choices_xpath]:
+            WebDriverWait(self.driver, timeout=MODALS_TIMEOUT).\
+                until(EC.element_to_be_clickable((By.XPATH, element_xpath)))
+
     def click_x_button(self) -> None:
         self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.x_button_xpath).click()
 
@@ -34,11 +39,3 @@ class VintedManageCookiesModal:
 
     def click_confirm_my_choices_button(self) -> None:
         self.driver.find_element(by=By, value=self.modal_xpath + self.confirm_my_choices_xpath).click()
-
-    def wait_for_essentials(self) -> None:
-        try:
-            for element_xpath in [self.allow_all_cookies_xpath, self.confirm_my_choices_xpath]:
-                WebDriverWait(self.driver, timeout=MODALS_TIMEOUT).\
-                    until(EC.element_to_be_clickable((By.XPATH, element_xpath)))
-        except NoSuchElementException:
-            pass
