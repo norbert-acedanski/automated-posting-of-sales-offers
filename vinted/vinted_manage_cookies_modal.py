@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-MODALS_TIMEOUT = 10
+from vinted.vinted_constants import MODALS_TIMEOUT
 
 
 class VintedManageCookiesModal:
