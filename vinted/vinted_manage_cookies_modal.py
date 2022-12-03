@@ -21,7 +21,7 @@ class VintedManageCookiesModal:
 
     def wait_for_essentials(self, timeout: Union[float, int] = MODALS_TIMEOUT) -> None:
         for element_xpath in [self.x_button_xpath, self.allow_all_cookies_xpath, self.confirm_my_choices_xpath]:
-            WebDriverWait(self.driver, timeout=MODALS_TIMEOUT).\
+            WebDriverWait(self.driver, timeout=timeout).\
                 until(EC.element_to_be_clickable((By.XPATH, self.modal_xpath + element_xpath)))
 
     def click_x_button(self) -> None:
