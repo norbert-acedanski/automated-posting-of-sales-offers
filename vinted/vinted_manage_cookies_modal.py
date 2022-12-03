@@ -30,10 +30,10 @@ class VintedManageCookiesModal:
     def click_allow_all_cookies_button(self) -> None:
         self.driver.find_element(by=By, value=self.modal_xpath + self.allow_all_cookies_xpath).click()
 
-    def select_cookies_to_accept(self, cookies: List[str]) -> None:
+    def select_cookies_to_accept(self, cookies: List[str], uncheck: bool = False) -> None:
         for cookie in cookies:
             current_cookie_element = self.driver.find_element(by=By.XPATH, value=cookie)
-            if current_cookie_element.get_attribute("aria-checked") == "false":
+            if (current_cookie_element.get_attribute("aria-checked") == "false") is not uncheck:
                 current_cookie_element.click()
 
     def click_confirm_my_choices_button(self) -> None:
