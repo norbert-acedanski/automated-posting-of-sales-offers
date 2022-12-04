@@ -35,10 +35,11 @@ class VintedMainPage:
                 until(EC.element_to_be_clickable((By.XPATH, self.page_xpath + element_xpath)))
 
     def wait_for_cookies(self) -> None:
+        option_xpath_dict = {"accept": "accept-btn", "reject": "reject-all", "manage": "pc-btn"}
         for xpath_format in ["accept", "reject", "manage"]:
             WebDriverWait(self.driver, timeout=PAGES_TIMEOUT).\
                 until(EC.element_to_be_clickable((By.XPATH, self.page_xpath + self.cookie_buttons_component_xpath
-                                                  + self.cookie_button_xpath.format(xpath_format))))
+                                                  + self.cookie_button_xpath.format(option_xpath_dict[xpath_format]))))
 
     def choose_cookies_option(self, option: Literal["accept", "reject", "manage"]) \
             -> Union[None, VintedManageCookiesModal]:
