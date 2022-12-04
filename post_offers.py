@@ -1,7 +1,7 @@
 from contextlib import suppress
 from selenium.common.exceptions import NoSuchElementException
 
-from main import PRIVATE_OFFER
+PRIVATE_OFFER, BUSINESS_OFFER = "Prywatne", "Firmowe"
 
 class PostOLX():
     button_add_new_offer_xpath = "//button[@data-cy='post-new-ad-button']"
