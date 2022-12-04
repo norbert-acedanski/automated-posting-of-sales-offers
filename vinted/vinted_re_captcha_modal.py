@@ -29,4 +29,10 @@ class VintedReCaptchaModal:
 
     def click_i_am_not_a_robot_checkbox(self) -> None:
         self.driver.switch_to.frame(self.driver.find_element(by=By.XPATH, value=self.re_captcha_i_frame_xpath))
+        self.wait_for_iframe_essentials()
         self.driver.find_element(by=By.XPATH, value=self.re_captcha_i_am_not_a_robot_checkbox_xpath).click()
+
+    def wait_for_iframe_essentials(self) -> None:
+        for element_xpath in [self.re_captcha_i_am_not_a_robot_checkbox_xpath]:
+            WebDriverWait(self.driver, timeout=CAPTCHA_TIMEOUT).\
+                until(EC.element_to_be_clickable((By.XPATH, element_xpath)))
