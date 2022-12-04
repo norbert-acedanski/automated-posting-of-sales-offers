@@ -16,7 +16,7 @@ class VintedMainPage:
     vinted_logo_xpath = "//div[@data-testid='header-logo-id']"
     search_bar_xpath = "//input[@id='search_text']"
     register_login_button_xpath = "//a[@role='button' and @data-testid='header--login-button']"
-    sell_button_xpath = register_login_button_xpath + "/following-sibling::a"
+    sell_button_xpath = "//a[@role='button' and @rel='nofollow']"
     tabs_component_xpath = "//ul[@class='web_ui__Tabs__content']"
     cookie_buttons_component_xpath = "//div[@id='onetrust-button-group-parent']"
     cookie_button_xpath = "//button[@id='onetrust-{}-handler']"
