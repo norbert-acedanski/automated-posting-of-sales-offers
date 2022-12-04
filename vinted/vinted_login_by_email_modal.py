@@ -39,7 +39,7 @@ class VintedLoginByEmailModal:
         self.driver.find_element(by=By.XPATH,
                                  value=self.modal_xpath + self.password_textfield_xpath).send_keys(password)
 
-    def click_continue_button(self):
+    def click_continue_button(self) -> None:
         self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.continue_button_xpath).click()
         if self._is_recaptcha_visible():
             input("Unfortunately, reCAPTCHA modal was opened while login attempt. "
@@ -47,8 +47,6 @@ class VintedLoginByEmailModal:
         if self.driver.find_elements(by=By.XPATH, value=self.modal_xpath +
                                                         self.incorrect_login_or_password_warning_xpath):
             raise ValueError("Wrong login or password!")
-        from vinted.vinted_main_page import VintedMainPage
-        return VintedMainPage(self.driver)
 
     def _is_recaptcha_visible(self) -> bool:
         try:
