@@ -17,6 +17,7 @@ class VintedLoginByEmailModal:
     password_textfield_xpath = "//input[@id='password']"
     continue_button_xpath = "//button[@type='submit']"
     incorrect_login_or_password_warning_xpath = "//span[contains(@class, 'Text__warning')]"
+    loading_indicator_xpath = "//*[local-name()='circle']"
 
     def __init__(self, driver: webdriver.Chrome):
         self.driver = driver
@@ -47,6 +48,8 @@ class VintedLoginByEmailModal:
         if self.driver.find_elements(by=By.XPATH, value=self.modal_xpath +
                                                         self.incorrect_login_or_password_warning_xpath):
             raise ValueError("Wrong login or password!")
+        WebDriverWait(self.driver, timeout=MODALS_TIMEOUT). \
+            until_not(EC.presence_of_element_located((By.XPATH, self.modal_xpath + self.loading_indicator_xpath)))
 
     def _is_recaptcha_visible(self) -> bool:
         try:
