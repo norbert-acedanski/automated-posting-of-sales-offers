@@ -15,8 +15,8 @@ class VintedRegisterByEmailModal:
     profile_name_textfield_xpath = "//input[@id='login']"
     email_textfield_xpath = "//input[@id='email']"
     password_textfield_xpath = "//input[@id='password']"
-    want_to_receive_personalized_offers_checkbox_xpath = "//input[@id='subscribeToNewsletter']/span"
-    confirm_regulations_checkbox_xpath = "//input[@id='agreeRules']/span"
+    want_to_receive_personalized_offers_checkbox_xpath = "//input[@id='subscribeToNewsletter']/following-sibling::span"
+    confirm_regulations_checkbox_xpath = "//input[@id='agreeRules']/following-sibling::span"
     continue_button_xpath = "//button[@type='submit']"
 
     def __init__(self, driver: webdriver.Chrome):
@@ -30,6 +30,9 @@ class VintedRegisterByEmailModal:
                               self.confirm_regulations_checkbox_xpath, self.continue_button_xpath]:
             WebDriverWait(self.driver, timeout=timeout).\
                 until(EC.element_to_be_clickable((By.XPATH, self.modal_xpath + element_xpath)))
+
+    def click_x_button(self) -> None:
+        self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.x_button_xpath).click()
 
     def fill_full_name(self, full_name: str) -> None:
         self.driver.find_element(by=By.XPATH,
@@ -55,5 +58,5 @@ class VintedRegisterByEmailModal:
                                                     self.confirm_regulations_checkbox_xpath).click()
 
     def click_continue_button(self) -> NotImplemented:
-        self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.continue_button_xpath)
-        return NotImplemented
+        self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.continue_button_xpath).click()
+        raise NotImplemented
