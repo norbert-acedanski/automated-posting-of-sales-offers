@@ -1,13 +1,14 @@
 from typing import Union
 
 from selenium import webdriver
-from selenium.common import NoSuchElementException, TimeoutException
+from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import MODALS_TIMEOUT
 from vinted.vinted_re_captcha_modal import VintedReCaptchaModal
+from vinted.vinted_two_factor_verification_modal import VintedTwoFactorVerificationModal
 
 
 class VintedLoginByEmailModal:
@@ -48,6 +49,9 @@ class VintedLoginByEmailModal:
         if self.driver.find_elements(by=By.XPATH, value=self.modal_xpath +
                                                         self.incorrect_login_or_password_warning_xpath):
             raise ValueError("Wrong login or password!")
+        if self._is_confirm_your_activity_visible():
+            input("Unfortunately, a two factor verification modal was opened while login attempt. "
+                  "Input the code received and click Enter here...")
         WebDriverWait(self.driver, timeout=MODALS_TIMEOUT). \
             until_not(EC.presence_of_element_located((By.XPATH, self.modal_xpath + self.loading_indicator_xpath)))
 
@@ -57,4 +61,11 @@ class VintedLoginByEmailModal:
         except TimeoutException:
             return False
         re_captcha_modal.click_i_am_not_a_robot_checkbox()
+        return True
+
+    def _is_confirm_your_activity_visible(self) -> bool:
+        try:
+            VintedTwoFactorVerificationModal(self.driver)
+        except TimeoutException:
+            return False
         return True
