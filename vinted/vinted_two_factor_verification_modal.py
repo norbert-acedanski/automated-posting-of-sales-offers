@@ -23,7 +23,7 @@ class VintedTwoFactorVerificationModal:
         for element_xpath in [self.verification_code_textfield_xpath, self.trusted_device_checkbox_xpath,
                               self.verify_button_xpath, self.new_code_button_xpath]:
             WebDriverWait(self.driver, timeout=timeout).\
-                until(EC.element_to_be_clickable((By.XPATH, self.modal_xpath + element_xpath)))
+                until(EC.presence_of_element_located((By.XPATH, self.modal_xpath + element_xpath)))
 
     def click_remember_device_checkbox(self) -> None:
         self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.trusted_device_checkbox_xpath).click()
