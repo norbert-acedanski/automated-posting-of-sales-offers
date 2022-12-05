@@ -140,13 +140,3 @@ class PostOLX():
         self.set_offer_brand(brand)
         self.set_offer_material(material)
         self.switch_auto_renewal(auto_renewal)
-
-class PostAllegroLokalnie():
-    pass
-
-class PostSprzedajemy():
-    feedback_modal_xpath = "//div[@data-testid='feedback-modal']"
-    feedback_modal_close_xpath = "//button[@data-testid='feedback-resolved-close']"
-
-class PostVinted():
-    pass
