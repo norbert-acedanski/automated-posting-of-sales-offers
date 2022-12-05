@@ -18,15 +18,17 @@ class PrepareAndCheckOffers:
     def __init__(self):
         self.offers_folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
         self.json_data = {
-                 "title": "Offer title. In case of OLX - title should be longer, than 16 characters.",
-                 "description": "Description for an offer. In some cases (like OLX page), the description has to be longer, than 80 characters.",
-                 "category": "Category, like Czapka zimowa/Koszule/Spodnie jeansowe etc.",
+                 "description": "Description for an offer. In some cases (like OLX page), "
+                                "the description has to be longer, than 80 characters.",
+                 "category": {"vinted": ["Correct", "category", "path", "vinted"],
+                              "olx": ["Correct", "category", "path", "olx"]},
                  "condition": "fine/good/very good/new without a tag/new with a tag",
                  "size": "XS/S/M/L/XL/XXL/30/45 etc.",
                  "sex": "M/K/U (M - Man, K - Woman, U - Universal)",
                  "price": 10,
                  "brand": "Adidas/Champion/House Brand/None",
-                 "colors": ["black", "white", "maximum of two colors in this list, with the most important as the first element"],
+                 "colors": ["black", "white", "maximum of two colors in this list, "
+                                              "with the most important as the first element"],
                  "material": "akryl/wool etc.",
                  "package size": "S/M/L (S - small, M - medium, L - large)"
                 }
