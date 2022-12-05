@@ -14,7 +14,6 @@ class VintedReCaptchaModal:
     re_captcha_i_frame_xpath = "//iframe[@title='reCAPTCHA']"
     re_captcha_i_am_not_a_robot_checkbox_xpath = "//*[contains(@class, 'recaptcha-checkbox ')]"
 
-
     def __init__(self, driver: webdriver.Chrome):
         self.driver = driver
         self.wait_for_essentials()
