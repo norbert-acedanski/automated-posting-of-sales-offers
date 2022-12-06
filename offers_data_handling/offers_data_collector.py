@@ -5,7 +5,7 @@ from typing import List, Dict, Union
 from common.common import OFFERS_FOLDER_PATH
 
 
-class OffersDataHandler:
+class OffersDataCollector:
     def __init__(self):
         self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_PATH
 
