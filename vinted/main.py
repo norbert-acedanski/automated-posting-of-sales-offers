@@ -13,7 +13,7 @@ if __name__ == "__main__":
     vinted_login_modal.click_continue_button()
     vinted_main_page.wait_for_essentials()
     vinted_sell_page = vinted_main_page.click_sell_button()
-    photos_paths = []  # With an empty list, a trash offer will be posted
+    photos_paths = []  # With an empty list, a trash offer will not be posted
     vinted_sell_page.add_photos_to_offer(photos_paths)
     vinted_sell_page.add_title_to_offer("Sample title")
     vinted_sell_page.add_description_to_offer("Small description")
