@@ -1,2 +1,4 @@
 /tests/__pycache__
 /__pycache__
+/offers_to_post/*
+!/offers_to_post/Offer example structure
