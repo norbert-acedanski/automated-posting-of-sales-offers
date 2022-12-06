@@ -1,7 +1,6 @@
 import os
 import json
 
-OFFERS_FOLDER_NAME = "offers_to_post"
 NAMES_OF_FILES_AND_FOLDERS = ["photos", "properties.json"]
 MANDATORY_PROPERTIES = ["title", "description", "category", "condition", "size", "sex", "price", "brand", "colors", "package size"]
 IMAGE_EXTENSIONS = ["jpeg", "png"]
@@ -16,39 +15,9 @@ ENDC = '\033[0m'
 
 class PrepareAndCheckOffers:
     def __init__(self):
-        self.offers_folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
-        self.json_data = {
-                 "description": "Description for an offer. In some cases (like OLX page), "
-                                "the description has to be longer, than 80 characters.",
-                 "category": {"vinted": ["Correct", "category", "path", "vinted"],
-                              "olx": ["Correct", "category", "path", "olx"]},
-                 "condition": "fine/good/very good/new without a tag/new with a tag",
-                 "size": "XS/S/M/L/XL/XXL/30/45 etc.",
-                 "sex": "M/K/U (M - Man, K - Woman, U - Universal)",
-                 "price": 10,
-                 "brand": "Adidas/Champion/House Brand/None",
-                 "colors": ["black", "white", "maximum of two colors in this list, "
-                                              "with the most important as the first element"],
-                 "material": "akryl/wool etc.",
-                 "package size": "S/M/L (S - small, M - medium, L - large)"
-                }
         self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50}, "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
         self.description_boundaries = {"OLX": {"min": 80, "max": 9000}, "Allegro Lokalnie": {"min": 1, "max": 3000}, "Sprzedajemy": {"min": 1, "max": 6000}, "Vinted": {"min": 5, "max": 3000}}
         self.number_of_photos_boundaries = {"OLX": {"min": 1, "max": 8}, "Allegro Lokalnie": {"min": 1, "max": 15}, "Sprzedajemy": {"min": 1, "max": 12}, "Vinted": {"min": 1, "max": 20}}
-    
-    def add_offer_folders_with_photos(self, offer_list: list):
-        folder_path = os.path.dirname(__file__) + "/"+ OFFERS_FOLDER_NAME + "/"
-        os.mkdir(folder_path)
-        for offer in offer_list:
-            os.mkdir(folder_path + offer + "/")
-            os.mkdir(folder_path + offer + "/" + "photos/")
-
-    def add_properties_file_to_each_offer_folder(self):
-        list_of_offers = [offer.path for offer in os.scandir(self.offers_folder_path) if offer.is_dir()]
-        for offer_path in list_of_offers:
-            if not os.path.exists(offer_path + "/properties.json"):
-                with open(offer_path + "/properties.json", "w") as properties_file:
-                    json.dump(self.json_data, properties_file)
     
     def print_bounds_for_title(self):
         print(GREEN + "Title limits [characters]:" + ENDC)
