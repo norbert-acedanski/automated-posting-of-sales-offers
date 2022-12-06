@@ -1,0 +1,1146 @@
+{
+  "Kobiety": {
+    "Ubrania": {
+      "Okrycia wierzchnie": {
+        "Peleryny i poncza": null,
+        "P\u0142aszcze": {
+          "Budrys\u00f3wki": null,
+          "Sztuczne futra": null,
+          "Klasyczne i d\u0142ugie p\u0142aszcze": null,
+          "Parki": null,
+          "Bosmanki": null,
+          "Przeciwdeszczowe": null,
+          "Trencze": null
+        },
+        "Kurtki": {
+          "Motocykl\u00f3wki i kurtki wy\u015bcigowe": null,
+          "Bomberki": null,
+          "Kurtki jeansowe": null,
+          "Kurtki wojskowe i utility": null,
+          "Kurtki z polaru": null,
+          "Kurtki puchowe": null,
+          "Kurtki pikowane": null,
+          "Kurtki koszulowe": null,
+          "Kurtki narciarskie i snowboardowe": null,
+          "Kurtki bejsbol\u00f3wki": null,
+          "Kurtki wiatr\u00f3wki": null
+        },
+        "Bezr\u0119kawniki": null
+      },
+      "Bluzy i swetry": {
+        "Bluzy": {
+          "Swetry z dekoltem V": null,
+          "Golfy i p\u00f3\u0142golfy": null,
+          "D\u0142ugie swetry": null,
+          "Swetry z dzianiny": null,
+          "Swetry z r\u0119kawem \u00be": null,
+          "Bluzy": null
+        },
+        "Bluzy i swetry": null,
+        "Kimona": null,
+        "Kardigany": null,
+        "Bolerka": null,
+        "Kamizelki": null,
+        "Inne": null
+      },
+      "\u017bakiety i garnitury": {
+        "\u017bakiety": null,
+        "Garnitury ze spodniami": null,
+        "Garnitury ze sp\u00f3dnicami": null,
+        "Pojedyncze cz\u0119\u015bci garnituru": null,
+        "Inne garnitury i \u017cakiety": null
+      },
+      "Sukienki": {
+        "Kr\u00f3tkie sukienki": null,
+        "Sukienki midi": null,
+        "D\u0142ugie sukienki": null,
+        "Sukienki wizytowe": {
+          "Imprezowe/koktajlowe": null,
+          "Suknie \u015blubne": null,
+          "Suknie balowe": null,
+          "Sukienki wieczorowe": null,
+          "Sukienki bez plec\u00f3w": null
+        },
+        "Letnie sukienki": null,
+        "Sukienki dzianinowe": null,
+        "Sukienki biurowe": null,
+        "Sukienki na co dzie\u0144": null,
+        "Sukienki bez rami\u0105czek": null,
+        "Ma\u0142e czarne": null,
+        "Sukienki jeansowe": null,
+        "Inne": null
+      },
+      "Sp\u00f3dnice": {
+        "Sp\u00f3dnice kr\u00f3tkie": null,
+        "Sp\u00f3dnice midi": null,
+        "Sp\u00f3dnice d\u0142ugie": null,
+        "Sp\u00f3dnice o linii A": null,
+        "Sp\u00f3dnice tuba": null,
+        "Sp\u00f3dnice rozkloszowane": null,
+        "Sp\u00f3dnice d\u017cinsowe": null,
+        "Sp\u00f3dnice plisowane": null,
+        "Sp\u00f3dnice z wysokim stanem": null,
+        "Sp\u00f3dnice tulipan": null,
+        "Sp\u00f3dnice o\u0142\u00f3wkowe": null,
+        "Inne": null
+      },
+      "Topy, koszulki i T-shirty": {
+        "Koszule": null,
+        "Bluzki": null,
+        "Podkoszulki": null,
+        "T-shirty": null,
+        "Bokserki": null,
+        "Tuniki": null,
+        "Crop topy": null,
+        "Bluzki z kr\u00f3tkim r\u0119kawem": null,
+        "Bluzki z 3/4 r\u0119kawami": null,
+        "Bluzki z d\u0142ugim r\u0119kawem": null,
+        "Body": null,
+        "Bluzki bez r\u0119kaw\u00f3w": null,
+        "Golfy": null,
+        "Topy z baskink\u0105": null,
+        "Topy z dekoltem halter": null,
+        "Inne": null
+      },
+      "Jeansy": {
+        "D\u017cinsy boyfriend": null,
+        "D\u017cinsy do kostek": null,
+        "Dzwony jeansy": null,
+        "D\u017cinsy z wysokim stanem": null,
+        "D\u017cinsy z rozdarciami": null,
+        "D\u017cinsy skinny": null,
+        "D\u017cinsy straight": null,
+        "Inne": null
+      },
+      "Spodnie i legginsy": {
+        "Spodnie do kostek i chinosy": null,
+        "Spodnie z szerokimi nogawkami": null,
+        "Rurki": null,
+        "Spodnie z wysokim stanem": null,
+        "Spodnie typu proste": null,
+        "Sk\u00f3rzane spodnie": null,
+        "Legginsy": null,
+        "Haremki/ Alladynki": null,
+        "Inne": null
+      },
+      "Szorty": {
+        "Szorty z niskim stanem": null,
+        "Szorty z wysokim stanem": null,
+        "Bermudy": null,
+        "D\u017cinsowe szorty": null,
+        "Szorty z koronk\u0105": null,
+        "Sk\u00f3rzane szorty": null,
+        "Szorty cargo": null,
+        "Rybaczki": null,
+        "Inne": null
+      },
+      "Kombinezony": {
+        "Kombinezony d\u0142ugie": null,
+        "Kombinezony kr\u00f3tkie": null,
+        "Inne kombinezony": null
+      },
+      "Stroje k\u0105pielowe": {
+        "Jednocze\u015bciowe": null,
+        "Dwucz\u0119\u015bciowe": null,
+        "Chusty & sarongi": null,
+        "Inne": null
+      },
+      "Bielizna i odzie\u017c nocna": {
+        "Biustonosze": null,
+        "Majtki": null,
+        "Komplety": null,
+        "Bielizna modeluj\u0105ca": null,
+        "Pi\u017camy": null,
+        "Szlafroki": null,
+        "Rajstopy": null,
+        "Skarpety": null,
+        "Akcesoria bieli\u017aniane": null,
+        "Inne": null
+      },
+      "Ubrania dla kobiet w ci\u0105\u017cy": {
+        "Bluzki ci\u0105\u017cowe": null,
+        "Sukienki ci\u0105\u017cowe": null,
+        "Sp\u00f3dnice ci\u0105\u017cowe": null,
+        "Spodnie ci\u0105\u017cowe": null,
+        "Spodenki ci\u0105\u017cowe": null,
+        "Kombinezony ci\u0105\u017cowe d\u0142ugie i kr\u00f3tkie": null,
+        "Bluzy i swetry ci\u0105\u017cowe": null,
+        "Kurtki i p\u0142aszcze ci\u0105\u017cowe": null,
+        "Stroje k\u0105pielowe i pla\u017cowe": null,
+        "Bielizna ci\u0105\u017cowa": {
+          "Bielizna ci\u0105\u017cowa": null,
+          "Odzie\u017c na noc": null,
+          "Pasy ci\u0105\u017cowe i poporodowe": null,
+          "Staniki ci\u0105\u017cowe i do karmienia piersi\u0105": null
+        },
+        "Odzie\u017c sportowa": null
+      },
+      "Ubrania sportowe": {
+        "Odzie\u017c wierzchnia": null,
+        "Stroje na trening": null,
+        "Spodnie i legginsy": null,
+        "Szorty": null,
+        "Sukienki": null,
+        "Sp\u00f3dnice": null,
+        "Topy i T-shirty": null,
+        "Bluzy i swetry": null,
+        "Akcesoria": {
+          "Szaliki": null,
+          "Okulary": null,
+          "Zegarki i opaski": null,
+          "Czapki": null,
+          "R\u0119kawiczki": null,
+          "Ochraniacze": null,
+          "Inne akcesoria": null
+        },
+        "Biustonosze": null,
+        "Inne": null
+      },
+      "Kostiumy i ubrania okazyjne": null,
+      "Inne ubrania": null
+    },
+    "Obuwie": {
+      "Sztyblety i buty do kostek": null,
+      "Botki": {
+        "Glany": null,
+        "Kowbojki": null,
+        "Muszkieterki": null,
+        "Buty na platformie": null,
+        "Kalosze": null
+      },
+      "Na p\u0142askim obcasie": {
+        "Balerinki": null,
+        "Na p\u0142askim obcasie": null
+      },
+      "Japonki": null,
+      "Buty na obcasie": {
+        "Chodaki & drewniaki": null,
+        "Na wysokim obcasie": null,
+        "Z odkryt\u0105 pi\u0119t\u0105": null,
+        "Koturny": null
+      },
+      "Oksfordy i mokasyny": {
+        "Oksfordy": null,
+        "Mokasyny": null
+      },
+      "Sanda\u0142y": null,
+      "Kapcie i pantofle domowe": null,
+      "Tenis\u00f3wki": {
+        "Trampki": null,
+        "Buty na trening i si\u0142owni\u0119": null,
+        "Obuwie turystyczne i buty trekkingowe": null,
+        "Buty do biegania": null,
+        "Tenis\u00f3wki": null,
+        "Inne sporty": null
+      },
+      "Inne obuwie": null
+    },
+    "Torby": {
+      "Torby do r\u0119ki": null,
+      "Torby na rami\u0119": null,
+      "Plecaki": null,
+      "Torby shopper": null,
+      "Kopert\u00f3wki": null,
+      "Portfele": null,
+      "Kosmetyczki": null,
+      "Listonoszki": null,
+      "Nerki torby": null,
+      "Torby etniczne": null,
+      "Torby podr\u00f3\u017cne": null,
+      "Inne": null
+    },
+    "Akcesoria": {
+      "Bi\u017cuteria": {
+        "Pier\u015bcionki": null,
+        "Kolczyki": null,
+        "Bransoletki": null,
+        "Korale, wisiorki, naszyjniki": null,
+        "Zestawy bi\u017cuterii": null,
+        "Bi\u017cuteria na kostk\u0119": null,
+        "Broszki": null,
+        "Inne bi\u017cuteria": null
+      },
+      "Zegarki": null,
+      "Paski": null,
+      "Okulary przeciws\u0142oneczne": null,
+      "Szale i chusty": {
+        "Szaliki z dzianiny": null,
+        "Chustki na g\u0142ow\u0119": null,
+        "Szale i chusty oversize": null,
+        "Chusty": null,
+        "Inne": null
+      },
+      "R\u0119kawiczki": null,
+      "Kapelusze i czapki": {
+        "Czapki": null,
+        "Kapelusze": null,
+        "Czapki zimowe": null,
+        "Berety": null,
+        "Opaski na g\u0142ow\u0119": null,
+        "Inne": null
+      },
+      "Akcesoria do w\u0142os\u00f3w": null,
+      "Gad\u017cety elektroniczne": null,
+      "Breloczki": null,
+      "Parasole": null,
+      "Inne akcesoria i bi\u017cuteria": null
+    },
+    "Kosmetyki": {
+      "Makija\u017c": null,
+      "Perfumy": null,
+      "Piel\u0119gnacja twarzy": null,
+      "Akcesoria kosmetyczne": {
+        "Produkty do stylizacji w\u0142os\u00f3w": null,
+        "Akcesoria do makija\u017cu": null,
+        "Akcesoria do piel\u0119gnacji cia\u0142a": null,
+        "Akcesoria do piel\u0119gnacji twarzy": null,
+        "Akcesoria do piel\u0119gnacji paznokci": null
+      },
+      "Piel\u0119gnacja d\u0142oni": null,
+      "Piel\u0119gnacja paznokci": null,
+      "Piel\u0119gnacja cia\u0142a": null,
+      "Piel\u0119gnacja w\u0142os\u00f3w": null,
+      "Inne kosmetyki i akcesoria": null
+    }
+  },
+  "M\u0119\u017cczy\u017ani": {
+    "Ubrania": {
+      "D\u017cinsy": {
+        "D\u017cinsy z przetarciami": null,
+        "D\u017cinsy skinny": null,
+        "D\u017cinsy slim fit": null,
+        "D\u017cinsy straight fit": null
+      },
+      "Okrycia wierzchnie": {
+        "P\u0142aszcze": {
+          "Budrys\u00f3wki": null,
+          "Klasyczne i d\u0142ugie p\u0142aszcze": null,
+          "Parki": null,
+          "Bosmanki": null,
+          "Przeciwdeszczowe": null,
+          "Trencze": null
+        },
+        "Kurtki": {
+          "Motocykl\u00f3wki i kurtki wy\u015bcigowe": null,
+          "Bomberki": null,
+          "Kurtki jeansowe": null,
+          "Kurtki wojskowe i utility": null,
+          "Kurtki z polaru": null,
+          "Szwedki": null,
+          "Kurtki puchowe": null,
+          "Kurtki pikowane": null,
+          "Kurtki koszulowe": null,
+          "Kurtki narciarskie i snowboardowe": null,
+          "Kurtki bejsbol\u00f3wki": null,
+          "Kurtki wiatr\u00f3wki": null
+        },
+        "Poncza": null,
+        "Bezr\u0119kawniki": null
+      },
+      "Topy & T-shirty": {
+        "Koszule": {
+          "Koszule w kratk\u0119": null,
+          "Koszule d\u017cinsowe": null,
+          "Koszule g\u0142adkie": null,
+          "Koszulki z nadrukiem": null,
+          "Koszule w paski": null,
+          "Inne": null
+        },
+        "T-shirty": {
+          "T-shirty g\u0142adkie": null,
+          "T-shirty z nadrukiem": null,
+          "T-shirty w paski": null,
+          "Koszulki polo": null,
+          "T-shirty z d\u0142ugim r\u0119kawem": null,
+          "Inne": null
+        },
+        "Podkoszulki": null
+      },
+      "Garnitury i blezery": {
+        "Blezery": null,
+        "Spodnie garniturowe": null,
+        "Kamizelki": null,
+        "Garnitury - komplety": null,
+        "Garnitury \u015blubne": null,
+        "Inne": null
+      },
+      "Swetry, bluzy": {
+        "Bluzy": null,
+        "Swetry i bluzy z kapturem": null,
+        "Bluzy rozpinane": null,
+        "Kardigany": null,
+        "Swetry z okr\u0105g\u0142ym dekoltem": null,
+        "Swetry w serek": null,
+        "Swetry z golfem": null,
+        "D\u0142ugie swetry": null,
+        "Swetry z dzianiny": null,
+        "Kamizelki": null,
+        "Inne": null
+      },
+      "Spodnie": {
+        "Chinosy": null,
+        "Joggersy": null,
+        "Spodenki capri": null,
+        "Rurki": null,
+        "Spodnie eleganckie": null,
+        "Spodnie z szerokimi nogawkami": null,
+        "Inne": null
+      },
+      "Szorty": {
+        "Szorty cargo": null,
+        "Szorty chinosy": null,
+        "Szorty d\u017cinsowe": null,
+        "Inne szorty": null
+      },
+      "Bielizna, skarpety": {
+        "Bielizna": null,
+        "Skarpety": null,
+        "Szlafroki": null,
+        "Inne": null
+      },
+      "Stroje k\u0105pielowe": null,
+      "Sportowe ubrania i akcesoria": {
+        "Okrycia wierzchnie": null,
+        "Odzie\u017c fitness/trening": null,
+        "Spodnie": null,
+        "Szorty": null,
+        "Koszulki z kr\u00f3tkim r\u0119kawem, T-shirty": null,
+        "Pulowery i swetry": null,
+        "Akcesoria, dodatki": {
+          "Szaliki": null,
+          "Okulary": null,
+          "Zegarki i opaski": null,
+          "Czapki": null,
+          "R\u0119kawiczki": null,
+          "Ochraniacze": null,
+          "Inne akcesoria": null
+        },
+        "Inne": null
+      },
+      "Odzie\u017c specjalistyczna, kostiumy i przebrania": null,
+      "Inne": null
+    },
+    "Obuwie": {
+      "Botki": {
+        "Sztyblety i buty do kostek": null,
+        "Sztyblety": null,
+        "Glany": null,
+        "Buty typu desert": null,
+        "Wysokie buty": null,
+        "Kalosze": null
+      },
+      "Eleganckie buty": null,
+      "Oksfordy i loafery": {
+        "Mokasyny": null,
+        "Buty typu brogue i derby": null,
+        "Slip-on i loafers": null
+      },
+      "Sanda\u0142y": null,
+      "Klapki i japonki": {
+        "Japonki": null,
+        "Kapcie i pantofle domowe": null
+      },
+      "Obuwie sportowe": {
+        "Buty na trening i si\u0142owni\u0119": null,
+        "Obuwie turystyczne i buty trekkingowe": null,
+        "Buty do biegania": null,
+        "Inne sportowe": null
+      },
+      "Tenis\u00f3wki i trampki": null,
+      "Inne": null
+    },
+    "Akcesoria, dodatki": {
+      "Krawaty i poszetki": null,
+      "Torby": {
+        "Torby do r\u0119ki": null,
+        "Torby na rami\u0119": null,
+        "Plecaki": null,
+        "Listonoszki": null,
+        "Torby podr\u00f3\u017cne": null,
+        "Nerki": null,
+        "Portfele": null,
+        "Walizki": null,
+        "Inne": null
+      },
+      "Bi\u017cuteria": {
+        "Naszyjniki i \u0142a\u0144cuszki": null,
+        "Obr\u0105czki": null,
+        "Bransolety": null,
+        "Inne": null,
+        "Spinki do mankiet\u00f3w": null
+      },
+      "Paski": null,
+      "Zegarki": null,
+      "Okulary przeciws\u0142oneczne": null,
+      "Kapelusze i czapki": {
+        "Czapki z daszkiem": null,
+        "Kapelusze": null,
+        "Zimowe czapki": null,
+        "Berety": null,
+        "Inne": null
+      },
+      "Szaliki, szale, chusty": {
+        "Szaliki z dzianiny": null,
+        "Chusty na g\u0142ow\u0119": null,
+        "Du\u017ce szale i chusty": null,
+        "Inne": null
+      },
+      "R\u0119kawiczki": null,
+      "Inne": null
+    },
+    "Kosmetyki": {
+      "Piel\u0119gnacja twarzy": null,
+      "Akcesoria do piel\u0119gnacji dla m\u0119\u017cczyzn": {
+        "Akcesoria do golenia": null,
+        "Akcesoria do piel\u0119gnacji": null,
+        "Inne akcesoria do piel\u0119gnacji": null
+      },
+      "Piel\u0119gnacja w\u0142os\u00f3w": null,
+      "Piel\u0119gnacja cia\u0142a": null,
+      "Piel\u0119gnacja d\u0142oni i paznokci": null,
+      "Perfumy": null,
+      "Kosmetyki do makija\u017cu": null,
+      "Zestawy": null,
+      "Inne": null
+    }
+  },
+  "Dzieci": {
+    "Ubrania dla dziewczynek": {
+      "Dziew. ubranka niemowl\u0119ce": {
+        "Pajacyki": null,
+        "Body": null,
+        "Kombinezony dzieci\u0119ce": null,
+        "Zestawy": null,
+        "Inne": null
+      },
+      "Buty": {
+        "Buty dzieci\u0119ce": null,
+        "Botki": null,
+        "P\u0142askie buty": null,
+        "Buty na specjalne okazje": null,
+        "Kozaki": null,
+        "Sanda\u0142y": null,
+        "Buty wsuwane": null,
+        "Kapcie i pantofle domowe": null,
+        "Buty sportowe": null,
+        "Kalosze": null,
+        "Inne": null
+      },
+      "Okrycia wierzchnie": {
+        "P\u0142aszcze": {
+          "Budrys\u00f3wki": null,
+          "Parki": null,
+          "Bosmanki": null,
+          "Trencze": null
+        },
+        "Kurtki": {
+          "Marynarki": null,
+          "Bomberki": null,
+          "Kurtki jeansowe": null,
+          "Kurtki z polaru": null,
+          "Kurtki puchowe": null,
+          "Kurtki wiatr\u00f3wki": null
+        },
+        "Odzie\u017c przeciwdeszczowa": {
+          "Spodnie przeciwdeszczowe": null,
+          "Poncza": null,
+          "Kurtki i p\u0142aszcze przeciwdeszczowe": null,
+          "Komplety przeciwdeszczowe": null
+        },
+        "Odzie\u017c zimowa": {
+          "Kurtki zimowe": null,
+          "Spodnie zimowe": null,
+          "Kombinezony i zestawy zimowe": null
+        },
+        "Bezr\u0119kawniki": null
+      },
+      "Swetry i bluzy": {
+        "Swetry": null,
+        "Swetry z dekoltem V": null,
+        "Golfy": null,
+        "Zapinane swetry": null,
+        "Bolerka": null,
+        "Bluzy": null,
+        "Kamizelki": null,
+        "Inne": null
+      },
+      "Koszulki, topy i bluzki": {
+        "T-shirty": null,
+        "Koszulki polo": null,
+        "Koszule": null,
+        "Koszule z kr\u00f3tkim r\u0119kawem": null,
+        "Koszule z d\u0142ugim r\u0119kawem": null,
+        "Koszule bez r\u0119kaw\u00f3w": null,
+        "Tuniki": null,
+        "Inne": null
+      },
+      "Sukienki": {
+        "Kr\u00f3tkie sukienki": null,
+        "D\u0142ugie sukienki": null
+      },
+      "Sp\u00f3dniczki": null,
+      "Spodnie i szorty": {
+        "Jeansy": null,
+        "Rurki": null,
+        "Z szerok\u0105 nogawk\u0105": null,
+        "Legginsy": null,
+        "Kombinezony": null,
+        "Spodenki": null,
+        "Haremki": null,
+        "Inne": null
+      },
+      "Torby i plecaki": null,
+      "Akcesoria": {
+        "Czapki i kapelusze": null,
+        "R\u0119kawiczki": null,
+        "Szale i szaliki": null,
+        "Paski": null,
+        "Opaski i spinki do w\u0142os\u00f3w": null,
+        "Portmonetki": null,
+        "Bi\u017cuteria": null,
+        "Inne akcesoria": null
+      },
+      "Stroje k\u0105pielowe": {
+        "Jednocz\u0119\u015bciowe": null,
+        "Dwucz\u0119\u015bciowe": null,
+        "Szlafroki k\u0105pielowe": null
+      },
+      "Bielizna": {
+        "Skarpetki": null,
+        "Rajstopy": null,
+        "Majtki": null,
+        "Inne": null
+      },
+      "Pi\u017camy": {
+        "Jednocz\u0119\u015bciowe": null,
+        "Dwucz\u0119\u015bciowe": null,
+        "Koszule nocne": null
+      },
+      "Odzie\u017c sportowa": null,
+      "Paki ubra\u0144": null,
+      "Bli\u017ani\u0119ta i wi\u0119cej": null,
+      "Kostiumy tematyczne": null,
+      "Stroje wizytowe i na specjalne okazje": null,
+      "Inne": null
+    },
+    "Ubranka dla ch\u0142opc\u00f3w": {
+      "Ch\u0142. ubranka niemowl\u0119ce": {
+        "Pajacyki": null,
+        "Body": null,
+        "Kombinezony dzieci\u0119ce": null,
+        "Zestawy": null,
+        "Inne": null
+      },
+      "Buty": {
+        "Buty dzieci\u0119ce": null,
+        "Botki": null,
+        "Buty na specjalne okazje": null,
+        "Kozaki": null,
+        "Sanda\u0142y": null,
+        "Buty wsuwane": null,
+        "Kapcie": null,
+        "Buty sportowe": null,
+        "Kalosze": null,
+        "Inne": null
+      },
+      "P\u0142aszcze i kurtki": {
+        "P\u0142aszcze": {
+          "Budrys\u00f3wki": null,
+          "Parki": null,
+          "Bosmanki": null,
+          "Trencze": null
+        },
+        "Kurtki": {
+          "Marynarki": null,
+          "Bomberki": null,
+          "Kurtki jeansowe": null,
+          "Kurtki z polaru": null,
+          "Kurtki puchowe": null,
+          "Kurtki wiatr\u00f3wki": null
+        },
+        "Odzie\u017c przeciwdeszczowa": {
+          "Poncza": null,
+          "Spodnie przeciwdeszczowe": null,
+          "Komplety przeciwdeszczowe": null,
+          "Kurtki i p\u0142aszcze przeciwdeszczowe": null
+        },
+        "Odzie\u017c zimowa": {
+          "Kurtki zimowe": null,
+          "Spodnie zimowe": null,
+          "Kombinezony i zestawy zimowe": null
+        },
+        "Bezr\u0119kawniki": null
+      },
+      "Swetry i bluzy": {
+        "Swetry": null,
+        "Swetry z dekoltem V": null,
+        "Golfy": null,
+        "Zapinane swetry": null,
+        "Bluzy": null,
+        "Kamizelki": null,
+        "Inne": null
+      },
+      "Koszule i T-shirty": {
+        "T-shirty": null,
+        "Koszulki polo": null,
+        "Koszule": null,
+        "Koszule z kr\u00f3tkim r\u0119kawem": null,
+        "Koszule z d\u0142ugim r\u0119kawem": null,
+        "Koszule bez r\u0119kaw\u00f3w": null,
+        "Inne": null
+      },
+      "Spodnie i szorty": {
+        "Jeansy": null,
+        "Rurki": null,
+        "Z szerok\u0105 nogawk\u0105": null,
+        "Legginsy": null,
+        "Kombinezony": null,
+        "Spodenki": null,
+        "Haremki": null,
+        "Inne": null
+      },
+      "Torby i plecaki": null,
+      "Akcesoria": {
+        "Czapki i kapelusze": null,
+        "R\u0119kawiczki": null,
+        "Szaliki": null,
+        "Paski": null,
+        "Portfele": null,
+        "Muszki i krawaty": null,
+        "Inne akcesoria": null
+      },
+      "Stroje k\u0105pielowe": {
+        "Spodenki k\u0105pielowe": null,
+        "Szlafroki": null
+      },
+      "Bielizna": {
+        "Skarpetki": null,
+        "Rajstopy": null,
+        "Bielizna": null,
+        "Inne": null
+      },
+      "Pi\u017camy": {
+        "Pi\u017camy jednocz\u0119\u015bciowe": null,
+        "Pi\u017camy dwucz\u0119\u015bciowe": null
+      },
+      "Odzie\u017c sportowa": null,
+      "Paki ubra\u0144": null,
+      "Bli\u017aniaki i wi\u0119cej": null,
+      "Kostiumy tematyczne": null,
+      "Stroje wizytowe i na specjalne okazje": null,
+      "Inne": null
+    },
+    "Zabawki": {
+      "Figurki kolekcjonerskie": null,
+      "Lalki": null,
+      "Elektroniczne": null,
+      "Zabawki edukacyjne": null,
+      "Pluszaki": null,
+      "Grzechotki i zabawki do \u017cucia": null,
+      "Zabawki muzyczne": null,
+      "Budowanie": null,
+      "Drewniane zabawki": null,
+      "Zabawki mobilne": null,
+      "Zabawki do k\u0105pieli": null,
+      "Zabawki na zewn\u0105trz": null,
+      "Zabawki kuchenne": null,
+      "Zabawki do usypiania": null
+    },
+    "Opieka nad dzie\u0107mi": {
+      "Akcesoria do spania": {
+        "Koce": null,
+        "Poduszki": null,
+        "Pledy": null,
+        "\u015apiwory": null,
+        "Po\u015bciel": null,
+        "Ogrzewacze": null
+      },
+      "Naczynia dla dzieci": {
+        "Sztu\u0107ce": null,
+        "Butelki": null,
+        "Smoczki": null,
+        "Naczynia": null,
+        "Butelki termiczne, podgrzewacze": null,
+        "Inne": null,
+        "Poduszki do karmienia": null
+      },
+      "Noside\u0142ka i ro\u017cki dla niemowl\u0105t": null,
+      "Sprz\u0119t do p\u0142ywania": null,
+      "Pieluchy, piel\u0119gnacja": {
+        "Pieluchy": null,
+        "Higiena dziecka": null,
+        "Torby do przewijania niemowl\u0105t": null,
+        "Kosze na pieluchy": null
+      },
+      "Gad\u017cety elektroniczne": {
+        "Monitory dzieci\u0119ce": null,
+        "Podgrzewacze do jedzenia": null,
+        "Laktatory i akcesoria": null,
+        "Sterylizatory": null,
+        "Termometry i wagi": null
+      },
+      "Bujaki, le\u017caki": {
+        "Bujaki, le\u017caki": null,
+        "Hu\u015btawki": null
+      },
+      "\u015aliniaki": null,
+      "Nocniki": null,
+      "Bezpiecze\u0144stwo": {
+        "Zabezpieczenie domu i mebli": null,
+        "Os\u0142ony przeciws\u0142oneczne samochodu": null,
+        "Bezpiecze\u0144stwo na rowerze i rolkach": null,
+        "Inne": null
+      }
+    },
+    "W\u00f3zki": {
+      "Z parasolk\u0105": null,
+      "Do biegania": null,
+      "Uniwersalne": null,
+      "Dla bli\u017aniak\u00f3w": null,
+      "Akcesoria": null
+    },
+    "Zabawki do je\u017cd\u017cenia": {
+      "Chodziki dla dzieci": null,
+      "Zabawki do ci\u0105gni\u0119cia": null,
+      "Foteliki rowerowe i przyczepy dla dzieci": null,
+      "Skutery": null,
+      "Rowery tr\u00f3jko\u0142owe": null,
+      "Rowery": null,
+      "Do je\u017cd\u017cenia na zewn\u0105trz": null,
+      "Sanki, deski snowboardowe, narty": null,
+      "Wrotki, \u0142y\u017cwy": null
+    },
+    "Foteliki samochodowe i krzes\u0142a": {
+      "Foteliki samochodowe": null,
+      "Krzes\u0142a do karmienia": null
+    },
+    "Meble dzieci\u0119ce": {
+      "Ko\u0142yski": null,
+      "\u0141\u00f3\u017ceczka niemowl\u0119ce": null,
+      "\u0141\u00f3\u017ceczka dzieci\u0119ce": null,
+      "Materace": {
+        "Do \u0142\u00f3\u017cek niemowl\u0119cych": null,
+        "Do \u0142\u00f3\u017cek dla ma\u0142ych dzieci": null,
+        "Do \u0142\u00f3\u017cek dzieci\u0119cych": null
+      },
+      "Maty do zabawy": null,
+      "Przewijaki": null,
+      "Meble dzieci\u0119ce": {
+        "Krzes\u0142a": null,
+        "Sto\u0142y": null,
+        "Dywany": null,
+        "Szafy": null,
+        "P\u00f3\u0142ki": null,
+        "Meble do zabaw": null
+      }
+    },
+    "Szko\u0142a": {
+      "Plecaki szkolne": null,
+      "Przybory szkolne": null
+    },
+    "Inne": null
+  },
+  "Dom": {
+    "Tekstylia": {
+      "Po\u015bciel": {
+        "Komplety po\u015bcieli": null,
+        "Poszewki na ko\u0142dry": null,
+        "Poszewki na poduszki": null,
+        "Prze\u015bcierad\u0142a i poszewki": null
+      },
+      "Koce i narzuty": null,
+      "Firanki i zas\u0142ony": {
+        "Zas\u0142ony": null,
+        "Firanki": null
+      },
+      "Poduszki dekoracyjne": null,
+      "Dywany i chodniki": {
+        "Chodniki i wycieraczki": null,
+        "Dywany": null
+      },
+      "Obrusy": null,
+      "Tkaniny dekoracyjne": null,
+      "R\u0119czniki": {
+        "R\u0119czniki k\u0105pielowe": null,
+        "R\u0119czniki pla\u017cowe": null,
+        "R\u0119czniki do r\u0105k": null
+      }
+    },
+    "Akcesoria i ozdoby": {
+      "\u015awiece i \u015bwieczniki": {
+        "\u015awieczniki": null,
+        "\u015awiece": null
+      },
+      "Zegary": {
+        "Zegary stoj\u0105ce": null,
+        "Zegary \u015bcienne": null
+      },
+      "P\u00f3\u0142ki \u015bcienne": null,
+      "Lustra": {
+        "Lustra stoj\u0105ce": null,
+        "Lustra \u015bcienne": null
+      },
+      "Ramy i ramki": null,
+      "Przechowywanie": {
+        "Kosze": null,
+        "Pude\u0142ka": null,
+        "Pokrowce i wieszaki": null,
+        "Kuferki na bi\u017cuteri\u0119": null,
+        "Kuferki na kosmetyki": null
+      },
+      "Wazony": null
+    },
+    "Akcesoria sto\u0142owe": {
+      "Sztu\u0107ce": {
+        "Zestawy sztu\u0107c\u00f3w": null,
+        "Widelce": null,
+        "No\u017ce sto\u0142owe": null,
+        "\u0141y\u017cki": null
+      },
+      "Naczynia sto\u0142owe": {
+        "Serwisy obiadowe": null,
+        "Miski": null,
+        "Talerze": null,
+        "Tace": null
+      },
+      "Naczynia do napoj\u00f3w": {
+        "Kubki i fili\u017canki": null,
+        "Dzbanki do kawy i herbaty": null,
+        "Dzbanki": null,
+        "Kieliszki": null,
+        "Szklanki": null,
+        "Zestawy": null
+      }
+    }
+  },
+  "Rozrywka": {
+    "Gry komputerowe i konsole": {
+      "Xbox Series X i S": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Xbox One": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Xbox \u2013 starsze modele": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "PlayStation 5": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "PlayStation 4": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "PlayStation \u2013 starsze modele": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Nintendo Switch": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Nintendo Wii i Wii U": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Nintendo 3DS i 2DS": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Nintendo Game Boy": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Nintendo \u2013 starsze modele": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Sega": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Gry na PC": null,
+      "VR": {
+        "Gry": null,
+        "Konsole": null,
+        "Akcesoria": null
+      },
+      "Retro gaming": {
+        "Steam": null,
+        "Intellivision": null,
+        "Atari": null,
+        "ColecoVision": null,
+        "Commodore": null,
+        "3DO": null
+      }
+    },
+    "Gry i puzzle": {
+      "Gry planszowe": null,
+      "Gry kafelkowe": null,
+      "Gry karciane": null,
+      "Puzzle": null,
+      "\u0141amig\u0142\u00f3wki i gry logiczne": null,
+      "Gry podr\u00f3\u017cne i kieszonkowe": null,
+      "Gry bitewne i figurkowe": null,
+      "Gry zr\u0119czno\u015bciowe": null,
+      "Gry pod\u0142ogowe": null
+    },
+    "Muzyka i video": {
+      "Muzyka": {
+        "P\u0142yty CD": null,
+        "Kasety magnetofonowe": null,
+        "P\u0142yty winylowe": null,
+        "Starsze no\u015bniki audio": null
+      },
+      "Video": {
+        "P\u0142yty DVD": null,
+        "Kasety VHS": null
+      }
+    },
+    "Ksi\u0105\u017cki": {
+      "Powie\u015bci i literatura pi\u0119kna": {
+        "Literatura klasyczna": null,
+        "Komiksy i powie\u015bci graficzne": null,
+        "Powie\u015bci wsp\u00f3\u0142czesne": null,
+        "Krymina\u0142 i thriller": null,
+        "Humor": null,
+        "Poezja i dramat": null,
+        "Romans": null,
+        "Sci-fi i fantastyka": null,
+        "Inne powie\u015bci i lit. pi\u0119kna": null
+      },
+      "Literatura faktu": {
+        "Sztuka i rozrywka": null,
+        "Biografia": null,
+        "Biznes i finanse": null,
+        "Informatyka i technologia": null,
+        "Kuchnia i napoje": null,
+        "Zdrowie i dobrostan": null,
+        "Historia": null,
+        "Hobby i DIY": null,
+        "Rodzina i wychowanie dzieci": null,
+        "Polityka i spo\u0142ecze\u0144stwo": null,
+        "Lit. fachowa i specjalistyczna": null,
+        "Literatura akademicka": null,
+        "Religia i duchowo\u015b\u0107": null,
+        "Nauka i przyroda": null,
+        "Sport": null,
+        "Podr\u0119czniki i materia\u0142y naukowe": null,
+        "Podr\u00f3\u017ce": null,
+        "Inna literatura faktu": null
+      },
+      "Dzieci i m\u0142odzie\u017c": {
+        "Literatura dla m\u0142odzie\u017cy": null,
+        "Literatura dla dzieci": null,
+        "Literatura dla maluch\u00f3w": null
+      }
+    }
+  },
+  "Zwierz\u0119ta": {
+    "Psy": {
+      "Legowiska i koce": {
+        "Legowiska": null,
+        "Koce": null
+      },
+      "Ubranka i akcesoria": {
+        "Kurtki i kombinezony": null,
+        "Sweterki": null,
+        "Koszulki": null,
+        "Kostiumy": null,
+        "Buty i skarpetki": null,
+        "Akcesoria": null
+      },
+      "Zabawki": {
+        "Pi\u0142ki i zabawki do rzucania": null,
+        "Pluszowe zabawki": null,
+        "Twarde zabawki": null
+      },
+      "Obro\u017ce i smycze": {
+        "Obro\u017ce": null,
+        "Szelki": null,
+        "Smycze": null,
+        "Kaga\u0144ce": null
+      },
+      "Akcesoria do tresury": {
+        "Gwizdki": null,
+        "Torebki i woreczki": null
+      },
+      "Miski i karmniki": {
+        "Miski": null,
+        "Karmniki, bidony i poide\u0142ka": null
+      },
+      "Transportery i klatki": {
+        "Transportery": null,
+        "Klatki": null
+      },
+      "Piel\u0119gnacja": {
+        "Szczotki i grzebienie": null,
+        "Piel\u0119gnacja \u0142ap": null
+      }
+    },
+    "Koty": {
+      "Miski i karmniki": {
+        "Miski": null,
+        "Karmniki i poide\u0142ka": null
+      },
+      "Zabawki": {
+        "W\u0119dki": null,
+        "Pi\u0142ki": null,
+        "Pluszowe zabawki": null,
+        "Drapaki": null,
+        "Zabawki interaktywne": null
+      },
+      "Obro\u017ce i smycze": {
+        "Obro\u017ce": null,
+        "Szelki i smycze": null
+      },
+      "Legowiska": null,
+      "Transportery": {
+        "Plecaki i mi\u0119kkie transportery": null,
+        "Sztywne transportery": null
+      },
+      "Ubranka i akcesoria": {
+        "Ubranka": null,
+        "Kostiumy": null,
+        "Akcesoria": null
+      },
+      "Kuwety": null,
+      "Piel\u0119gnacja": {
+        "Szczotki i grzebienie": null,
+        "Piel\u0119gnacja \u0142ap": null
+      }
+    },
+    "Ma\u0142e zwierz\u0119ta": {
+      "Klatki i akcesoria": null,
+      "Zabawki": null
+    },
+    "Akwarystyka": {
+      "Sprz\u0119t do akwarium": null,
+      "Ozdoby i akcesoria": null
+    },
+    "Ptaki": {
+      "Zabawki": null,
+      "Klatki i akcesoria": null
+    },
+    "Gady": {
+      "Ozdoby i akcesoria": null,
+      "Sprz\u0119t do terrarium": null
+    }
+  }
+}
