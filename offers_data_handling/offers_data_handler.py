@@ -7,7 +7,7 @@ from common.common import OFFERS_FOLDER_PATH
 
 class OffersDataHandler:
     def __init__(self):
-        self.global_offers_path = os.path.dirname(__file__).replace("\\offers_data_handling", "") + OFFERS_FOLDER_PATH
+        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_PATH
 
     def get_offers_names(self) -> List[str]:
         return [offer.name for offer in os.scandir(self.global_offers_path) if offer.is_dir()]
