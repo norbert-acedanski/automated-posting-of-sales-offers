@@ -1,17 +1,22 @@
 from colors.colors import ForegroundColors as FC, BackgroundColors as BC, Styles
+from common.limits import GeneralLimits, OLXLimits, AllegroLokalnieLimits, SprzedajemyLimits, VintedLimits
 
 
 class OffersInfoForPages:
     def __init__(self):
-        self.title_boundaries = {"OLX": {"min": 16, "max": 70}, "Allegro Lokalnie": {"min": 1, "max": 50},
-                                 "Sprzedajemy": {"min": 3, "max": 60}, "Vinted": {"min": 5, "max": 100}}
-        self.description_boundaries = {"OLX": {"min": 80, "max": 9000}, "Allegro Lokalnie": {"min": 1, "max": 3000},
-                                       "Sprzedajemy": {"min": 1, "max": 6000}, "Vinted": {"min": 5, "max": 3000}}
-        self.number_of_photos_boundaries = {"OLX": {"min": 1, "max": 8}, "Allegro Lokalnie": {"min": 1, "max": 15},
-                                            "Sprzedajemy": {"min": 1, "max": 12}, "Vinted": {"min": 1, "max": 20}}
-        self.sexes = ["M - men", "K - woman", "U - universal"]
-        self.conditions = ["fine", "good", "very good", "new without a tag", "new with a tag"]
-        self.package_sizes = ["S", "M", "L"]
+        self.title_boundaries = {"OLX": OLXLimits.title, "Allegro Lokalnie": AllegroLokalnieLimits.title,
+                                 "Sprzedajemy": SprzedajemyLimits.title, "Vinted": VintedLimits.title}
+        self.description_boundaries = {"OLX": OLXLimits.description,
+                                       "Allegro Lokalnie": AllegroLokalnieLimits.description,
+                                       "Sprzedajemy": SprzedajemyLimits.description,
+                                       "Vinted": VintedLimits.description}
+        self.number_of_photos_boundaries = {"OLX": OLXLimits.number_of_photos,
+                                            "Allegro Lokalnie": AllegroLokalnieLimits.number_of_photos,
+                                            "Sprzedajemy": SprzedajemyLimits.number_of_photos,
+                                            "Vinted": VintedLimits.number_of_photos}
+        self.sexes = GeneralLimits.sexes
+        self.conditions = GeneralLimits.conditions
+        self.package_sizes = GeneralLimits.package_sizes
 
     def print_limits_for_title(self):
         print(FC.GREEN + "Title limits [characters]:" + FC.RESET)
