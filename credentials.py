@@ -15,8 +15,3 @@ class Credentials():
         print("Sprzedajemy Credentials")
         self.login_sprzedajemy = input("Provide your email: ")
         self.password_sprzedajemy = getpass("Provide your password: ")
-        
-    def get_vinted_credentials(self):
-        print("Vinted Credentials")
-        self.login_vinted = input("Provide your email: ")
-        self.password_vinted = getpass("Provide your password: ")

@@ -12,8 +12,3 @@ class OpenSprzedajemy():
     @staticmethod
     def launch_page(driver):
         driver.get("https://sprzedajemy.pl/")
-
-class OpenVinted():    
-    @staticmethod
-    def launch_page(driver):
-        driver.get("https://www.vinted.pl/")
