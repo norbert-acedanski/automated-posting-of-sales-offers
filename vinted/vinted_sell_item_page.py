@@ -1,4 +1,3 @@
-import os
 from typing import Union, List, Tuple, Literal, Dict
 
 from selenium import webdriver
