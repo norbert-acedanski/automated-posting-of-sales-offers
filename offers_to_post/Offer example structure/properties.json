@@ -1,1 +1,21 @@
-{"title": "Offer title. In case of OLX - title should be longer, than 16 characters.", "description": "Description for an offer. In some cases (like OLX page), the description has to be longer, than 80 characters.", "category": ["Correct", "category", "path"], "condition": "fine/good/very good/new without a tag/new with a tag", "size": "XS/S/M/L/XL/XXL/30/45 etc.", "sex": "M/K/U (M - Man, K - Woman, U - Universal)", "price": 10, "brand": "Adidas/Champion/House Brand/None", "colors": ["black", "white", "maximum of two colors in this list, with the most important as the first element"], "material": "akryl/wool etc.", "package size": "S/M/L (S - small, M - medium, L - large)"}
+{
+  "title": "Offer title. In case of OLX - title should be longer, than 16 characters.",
+  "description": "Description for an offer. In some cases (like OLX page), the description has to be longer, than 80 characters.",
+  "category": [
+    "Correct",
+    "category",
+    "path"
+  ],
+  "condition": "fine/good/very good/new without a tag/new with a tag",
+  "size": "XS/S/M/L/XL/XXL/30/45 etc.",
+  "sex": "M/K/U (M - Man, K - Woman, U - Universal)",
+  "price": 10,
+  "brand": "Adidas/Champion/House Brand/None",
+  "colors": [
+    "black",
+    "white",
+    "maximum of two colors in this list, with the most important as the first element"
+  ],
+  "material": "akryl/wool etc.",
+  "package size": "S/M/L (S - small, M - medium, L - large)"
+}
