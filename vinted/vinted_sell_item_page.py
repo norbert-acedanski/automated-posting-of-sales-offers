@@ -144,7 +144,7 @@ class VintedSellItemPage:
                 size_element.click()
                 break
 
-    def choose_status(self, status: Literal["new with tag", "new without tag", "very good", "good", "good enough"]) \
+    def choose_condition(self, status: Literal["new with tag", "new without tag", "very good", "good", "good enough"]) \
             -> None:
         status_dict = {"new with tag": 6, "new without tag": 1, "very good": 2, "good": 3, "good enough": 4}
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.item_status_textfield_xpath).click()
