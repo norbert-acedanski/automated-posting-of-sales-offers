@@ -3,7 +3,7 @@ import os
 import random
 import string
 
-from common.common import OFFERS_FOLDER_PATH
+from common.common import OFFERS_FOLDER_PATH, PHOTOS, PROPERTIES_JSON
 
 
 class PrepareOffersDirectoryStructure:
@@ -33,11 +33,11 @@ class PrepareOffersDirectoryStructure:
         random_string = "".join(random.choices(string.ascii_letters + string.digits, k=10))
         for offer_number in range(1, number_of_offers + 1):
             os.mkdir(self.global_offers_path + f"/Offer {random_string} {offer_number}/")
-            os.mkdir(self.global_offers_path + f"/Offer {random_string} {offer_number}/photos/")
+            os.mkdir(self.global_offers_path + f"/Offer {random_string} {offer_number}/{PHOTOS}/")
 
     def add_properties_file_to_each_offer_directory(self):
         list_of_offers = [offer.path for offer in os.scandir(self.global_offers_path) if offer.is_dir()]
         for offer_path in list_of_offers:
-            if not os.path.exists(offer_path + "/properties.json"):
-                with open(offer_path + "/properties.json", "w") as properties_file:
+            if not os.path.exists(offer_path + f"/{PROPERTIES_JSON}"):
+                with open(offer_path + f"/{PROPERTIES_JSON}", "w") as properties_file:
                     json.dump(self.json_data, properties_file, indent=4)
