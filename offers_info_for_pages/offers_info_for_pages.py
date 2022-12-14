@@ -15,24 +15,24 @@ class OffersInfoForPages:
 
     def print_limits_for_title(self):
         print(FC.GREEN + "Title limits [characters]:" + FC.RESET)
-        for key, value in self.title_boundaries.items():
-            print(FC.YELLOW + key + FC.RESET + ": min - " + FC.BLUE + str(value["min"]) + FC.RESET + ", max - " +
+        for site, value in self.title_boundaries.items():
+            print(FC.YELLOW + site + FC.RESET + ": min - " + FC.BLUE + str(value["min"]) + FC.RESET + ", max - " +
                   FC.BLUE + str(value["max"]) + FC.RESET)
         print("Valid for: 06.12.2022")
         print("")
 
     def print_limits_for_description(self):
         print(FC.GREEN + "Description limits [characters]:" + FC.RESET)
-        for key, value in self.description_boundaries.items():
-            print(FC.YELLOW + key + FC.RESET + ": min - " + FC.BLUE + str(value["min"]) + FC.RESET + ", max - " +
+        for site, value in self.description_boundaries.items():
+            print(FC.YELLOW + site + FC.RESET + ": min - " + FC.BLUE + str(value["min"]) + FC.RESET + ", max - " +
                   FC.BLUE + str(value["max"]) + FC.RESET)
         print("Valid for: 06.12.2022")
         print("")
 
     def print_limits_for_photos(self):
         print(FC.GREEN + "Number of photos limits:" + FC.RESET)
-        for key, value in self.number_of_photos_boundaries.items():
-            print(FC.YELLOW + key + FC.RESET + ": min - " + FC.BLUE + str(value["min"]) + FC.RESET + ", max - " +
+        for site, value in self.number_of_photos_boundaries.items():
+            print(FC.YELLOW + site + FC.RESET + ": min - " + FC.BLUE + str(value["min"]) + FC.RESET + ", max - " +
                   FC.BLUE + str(value["max"]) + FC.RESET)
         print("Valid for: 06.12.2022")
         print("")
