@@ -12,7 +12,7 @@ class OffersDataCollector:
     def get_offers_names(self) -> List[str]:
         return [offer.name for offer in os.scandir(self.global_offers_path) if offer.is_dir()]
 
-    def get_offer_properties(self, offer_name: str) -> Dict[str, Union[List[str], str, Dict[str, str]]]:
+    def get_offer_properties(self, offer_name: str) -> Dict[str, Union[List[str], str, Dict[str, List[str]]]]:
         offer_path = f"{self.global_offers_path}/{offer_name}"
         photos_path = f"{offer_path}/{PHOTOS}"
         offer_properties = {"title": offer_name,
