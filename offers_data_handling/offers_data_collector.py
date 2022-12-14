@@ -2,7 +2,7 @@ import json
 import os
 from typing import List, Dict, Union
 
-from common.common import OFFERS_FOLDER_PATH
+from common.common import OFFERS_FOLDER_PATH, PHOTOS, PROPERTIES_JSON
 
 
 class OffersDataCollector:
@@ -14,11 +14,11 @@ class OffersDataCollector:
 
     def get_offer_properties(self, offer_name: str) -> Dict[str, Union[List[str], str, Dict[str, str]]]:
         offer_path = f"{self.global_offers_path}/{offer_name}"
-        photos_path = f"{offer_path}/photos"
+        photos_path = f"{offer_path}/{PHOTOS}"
         offer_properties = {"title": offer_name,
                             "photos": [f"{photos_path}/{photo.name}" for photo in os.scandir(photos_path)
                                        if not photo.is_dir()]}
-        with open(f"{offer_path}/properties.json", "r", encoding="utf-8") as properties_file:
+        with open(f"{offer_path}/{PROPERTIES_JSON}", "r", encoding="utf-8") as properties_file:
             properties_data = json.load(properties_file)
         offer_properties.update(properties_data)
         return offer_properties
