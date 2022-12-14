@@ -23,6 +23,6 @@ class VintedLimits:
 
 
 class GeneralLimits:
-    sexes = ["M - men", "K - woman", "U - universal"]
+    sexes = ["M", "K", "U"]  # M - men, K - woman, U - universal
     conditions = ["fine", "good", "very good", "new without a tag", "new with a tag"]
     package_sizes = ["S", "M", "L"]
