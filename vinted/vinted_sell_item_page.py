@@ -6,7 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from vinted.vinted_constants import PAGES_TIMEOUT
+from vinted_constants import PAGES_TIMEOUT
+from vinted_member_page import VintedMemberPage
 
 
 class VintedSellItemPage:
@@ -179,6 +180,6 @@ class VintedSellItemPage:
                                  value=self.page_xpath +
                                        self.package_size_xpath.format(package_size_dict[package_size])).click()
 
-    def click_add_item_button(self) -> NotImplemented:
+    def click_add_item_button(self) -> VintedMemberPage:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.add_item_button_xpath).click()
-        return NotImplemented
+        return VintedMemberPage(self.driver)
