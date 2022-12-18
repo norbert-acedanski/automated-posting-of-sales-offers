@@ -1,5 +1,7 @@
 from typing import Union
 
+from colors.colors import ForegroundColors as FC, BackgroundColors as BC, Styles
+
 from selenium import webdriver
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
@@ -44,14 +46,15 @@ class VintedLoginByEmailModal:
     def click_continue_button(self) -> None:
         self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.continue_button_xpath).click()
         if self._is_recaptcha_visible():
-            input("Unfortunately, reCAPTCHA modal was opened while login attempt. "
-                  "Complete recaptcha and click Enter...")
+            input(FC.YELLOW + BC.BLACK + "Unfortunately, reCAPTCHA modal was opened while login attempt. "
+                                         "Complete recaptcha and click Enter..." + FC.RESET + BC.RESET)
         if self.driver.find_elements(by=By.XPATH, value=self.modal_xpath +
                                                         self.incorrect_login_or_password_warning_xpath):
-            raise ValueError("Wrong login or password!")
+            raise ValueError(FC.RED + "Wrong login or password!" + FC.RESET)
         if self._is_confirm_your_activity_visible():
-            input("Unfortunately, a two factor verification modal was opened while login attempt. "
-                  "Input the code received and click Enter here...")
+            input(FC.YELLOW + BC.BLACK + "Unfortunately, a two factor verification modal was opened while login "
+                                         "attempt. Input the code received and click Enter here..."
+                  + FC.RESET + BC.RESET)
         WebDriverWait(self.driver, timeout=MODALS_TIMEOUT). \
             until_not(EC.presence_of_element_located((By.XPATH, self.modal_xpath + self.loading_indicator_xpath)))
 
