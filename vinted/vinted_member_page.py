@@ -1,7 +1,6 @@
 import time
 from typing import Union, List, Dict
 
-import selenium.webdriver.common.devtools.v85.debugger
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -27,11 +26,9 @@ class VintedMemberPage:
     feedback_tab_xpath = "//li[@id='feedback']"
     feedback_part_xpath = "//div[@class='profile u-flex-direction-column']/div[contains(@class, 'Cell__default')]"
     comment_general_xpath = feedback_part_xpath + "/div/div/div[contains(@class, 'Cell__cell')]"
-    comment_user_name_xpath = comment_general_xpath + "//div[@data-testid='feedback-item--title']/a"
+    comment_user_name_xpath = comment_general_xpath + "//div[@data-testid='feedback-item--title']/*"
     comment_rating_xpath = comment_general_xpath + "//div[contains(@class, 'Rating__regular')]"
     comment_comment_xpath = comment_rating_xpath + "/following-sibling::span"
-
-    # TODO: Test all methods!
 
     def __init__(self, driver: webdriver.Chrome):
         self.driver: webdriver = driver
@@ -45,7 +42,7 @@ class VintedMemberPage:
                 until(EC.element_to_be_clickable((By.XPATH, self.page_xpath + element_xpath)))
 
     def get_profile_name(self) -> str:
-        return self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.profile_picture_xpath).text
+        return self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.profile_name).text
 
     def get_profile_rating(self) -> int:
         """Returns rating of a profile from 1 to 5 including"""
@@ -62,10 +59,11 @@ class VintedMemberPage:
         return VintedEditProfilePage(self.driver)  # TODO: Not implemented
 
     def click_my_closet_tab(self) -> None:
+        self.scroll_max_up()
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.my_closet_tab_xpath).click()
         WebDriverWait(self.driver, timeout=SHORT_TIMEOUT). \
             until(EC.invisibility_of_element_located(
-            (By.XPATH, self.page_xpath + "//div[@class='web_ui__Spacer__large web_ui__Spacer__horizontal']")))
+                (By.XPATH, self.page_xpath + "//div[@class='web_ui__Spacer__large web_ui__Spacer__horizontal']")))
 
     def get_number_of_user_items(self) -> int:
         return int(self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.items_count_xpath).
@@ -81,10 +79,11 @@ class VintedMemberPage:
         return [item.get_attribute("href") for item in all_items]
 
     def click_feedback_tab(self) -> None:
+        self.scroll_max_up()
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.feedback_tab_xpath).click()
         WebDriverWait(self.driver, timeout=SHORT_TIMEOUT). \
             until(EC.visibility_of_element_located(
-            (By.XPATH, self.page_xpath + "//div[@class='web_ui__Spacer__large web_ui__Spacer__horizontal']")))
+                (By.XPATH, self.page_xpath + "//div[@class='web_ui__Spacer__large web_ui__Spacer__horizontal']")))
 
     def get_number_of_visible_comments(self) -> int:
         return len(self.driver.find_elements(by=By.XPATH, value=self.page_xpath + self.comment_general_xpath))
@@ -92,18 +91,23 @@ class VintedMemberPage:
     def get_comments_and_rating_from_users_feedback(self) -> Dict[str, Dict[str, Union[str, int]]]:
         while self.get_number_of_visible_comments() != self.get_number_of_comments():
             self.scroll_max_down()
-        all_profile_names_elements = self.driver.find_elements(by=By.XPATH, value=self.page_xpath +
-                                                                                  self.comment_user_name_xpath)
-        all_ratings_elements = self.driver.find_elements(by=By.XPATH, value=self.page_xpath + self.comment_rating_xpath)
-        all_comments_elements = self.driver.find_elements(by=By.XPATH, value=self.page_xpath +
-                                                                             self.comment_comment_xpath)
-        return {profile_name_element.text: {"rating": int(rating_element.get_attribute("aria-label").
-                                                          replace("Member rated ", "").split(" out of ")[0]),
-                                            "comment": comment_element.text}
-                for profile_name_element, rating_element, comment_element
-                in zip(all_profile_names_elements, all_ratings_elements, all_comments_elements)}
+        comments_and_ratings_dict = {}
+        for index in range(1, self.get_number_of_comments() + 1):
+            current_user_name = self.driver.find_element(by=By.XPATH,
+                                                         value=f"({self.comment_user_name_xpath})[{index}]").text
+            current_user_rating = \
+                int(self.driver.find_element(by=By.XPATH, value=f"({self.comment_rating_xpath})[{index}]").
+                    get_attribute("aria-label").replace("Member rated ", "").split(" out of ")[0])
+            current_user_comment = self.driver.find_element(by=By.XPATH,
+                                                            value=f"({self.comment_comment_xpath})[{index}]").text
+            comments_and_ratings_dict[current_user_name] = {"rating": current_user_rating,
+                                                            "comment": current_user_comment}
+        return comments_and_ratings_dict
 
     def scroll_max_down(self) -> None:
         self.driver.execute_script("window.scrollTo(0,0)")
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(0.5)
+
+    def scroll_max_up(self) -> None:
+        self.driver.execute_script("window.scrollTo(0,0)")
