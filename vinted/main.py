@@ -28,5 +28,4 @@ if __name__ == "__main__":
         vinted_sell_page.choose_colors(current_offer_properties["colors"])
         vinted_sell_page.add_price(current_offer_properties["price"])
         vinted_sell_page.choose_package_size(current_offer_properties["package size"])
-        breakpoint()
         vinted_sell_page.click_add_item_button()
