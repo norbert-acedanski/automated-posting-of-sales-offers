@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from vinted_constants import PAGES_TIMEOUT
+from vinted_constants import PAGES_TIMEOUT, PHOTO_UPLOAD_TIMEOUT
 from vinted_member_page import VintedMemberPage
 
 
@@ -72,7 +72,7 @@ class VintedSellItemPage:
             self.add_photo_to_offer(photo_path)
             self.wait_for_photo_to_fully_upload()
 
-    def wait_for_photo_to_fully_upload(self, timeout: Union[int, float] = PAGES_TIMEOUT) -> None:
+    def wait_for_photo_to_fully_upload(self, timeout: Union[int, float] = PHOTO_UPLOAD_TIMEOUT) -> None:
         try:
             WebDriverWait(self.driver, timeout=1). \
                 until(EC.presence_of_element_located((By.XPATH, self.page_xpath + self.loading_indicator_xpath)))
