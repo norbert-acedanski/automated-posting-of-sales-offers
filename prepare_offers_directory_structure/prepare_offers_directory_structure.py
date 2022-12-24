@@ -8,7 +8,7 @@ from common.common import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
 
 class PrepareOffersDirectoryStructure:
     def __init__(self):
-        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_NAME
+        self.global_offers_path = os.path.join(os.path.split(os.path.dirname(__file__))[0], OFFERS_FOLDER_NAME)
         self.json_data = {
             "description": "Description for an offer. In some cases (like OLX page), "
                            "the description has to be longer, than 80 characters.",
@@ -32,12 +32,12 @@ class PrepareOffersDirectoryStructure:
             print("No need to create 'offers_to_post' directory, skipping...")
         random_string = "".join(random.choices(string.ascii_letters + string.digits, k=10))
         for offer_number in range(1, number_of_offers + 1):
-            os.mkdir(self.global_offers_path + f"/Offer {random_string} {offer_number}/")
-            os.mkdir(self.global_offers_path + f"/Offer {random_string} {offer_number}/{PHOTOS}/")
+            os.mkdir(os.path.join(self.global_offers_path, f"Offer {random_string} {offer_number}"))
+            os.mkdir(os.path.join(self.global_offers_path, f"Offer {random_string} {offer_number}", PHOTOS))
 
     def add_properties_file_to_each_offer_directory(self):
         list_of_offers = [offer.path for offer in os.scandir(self.global_offers_path) if offer.is_dir()]
         for offer_path in list_of_offers:
-            if not os.path.exists(offer_path + f"/{PROPERTIES_JSON}"):
-                with open(offer_path + f"/{PROPERTIES_JSON}", "w") as properties_file:
+            if not os.path.exists(os.path.join(offer_path, PROPERTIES_JSON)):
+                with open(os.path.join(offer_path, PROPERTIES_JSON), "w") as properties_file:
                     json.dump(self.json_data, properties_file, indent=4)

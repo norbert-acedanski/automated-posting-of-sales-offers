@@ -9,7 +9,7 @@ from common.limits import GeneralLimits, OLXLimits, AllegroLokalnieLimits, Sprze
 
 class CheckOffersForSites:
     def __init__(self):
-        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_PATH
+        self.global_offers_path = os.path.join(os.path.split(os.path.dirname(__file__))[0], OFFERS_FOLDER_NAME)
         self.title_boundaries = {"OLX": OLXLimits.title, "Allegro Lokalnie": AllegroLokalnieLimits.title,
                                  "Sprzedajemy": SprzedajemyLimits.title, "Vinted": VintedLimits.title}
         self.description_boundaries = {"OLX": OLXLimits.description,
@@ -30,17 +30,16 @@ class CheckOffersForSites:
                                                                                  self.list_of_properties)}
 
     def _get_list_of_offers(self) -> List[str]:
-        return [offer.path[offer.path.rfind("\\") + 1:] for offer in os.scandir(self.global_offers_path)
-                if offer.is_dir()]
+        return [os.path.split(offer.path)[1] for offer in os.scandir(self.global_offers_path) if offer.is_dir()]
 
     def _get_numbers_of_photos(self) -> List[int]:
-        return [len(os.listdir(f"{self.global_offers_path}/{offer_name}/{PHOTOS}"))
+        return [len(os.listdir(os.path.join(self.global_offers_path, offer_name, PHOTOS, "")))
                 for offer_name in self.list_of_offers]
 
     def _get_list_of_properties(self) -> List[Dict[str, Union[str, List[str], Dict[str, List[str]]]]]:
         properties = []
         for offer, number_of_photos in zip(self.list_of_offers, self.numbers_of_photos):
-            with open(f"{self.global_offers_path}/{offer}/{PROPERTIES_JSON}", "r") as properties_file:
+            with open(os.path.join(self.global_offers_path, offer, PROPERTIES_JSON), "r") as properties_file:
                 properties_data = json.load(properties_file)
             properties_data["photos"] = number_of_photos
             properties.append(properties_data)
