@@ -3,7 +3,7 @@ import os
 from typing import List, Dict, Union
 
 from colors.colors import ForegroundColors as FC, BackgroundColors as BC, Styles
-from common.common import OFFERS_FOLDER_PATH, PROPERTIES_JSON, PHOTOS
+from common.common import OFFERS_FOLDER_NAME, PROPERTIES_JSON, PHOTOS
 from common.limits import GeneralLimits, OLXLimits, AllegroLokalnieLimits, SprzedajemyLimits, VintedLimits
 
 

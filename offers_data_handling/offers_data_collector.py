@@ -2,12 +2,12 @@ import json
 import os
 from typing import List, Dict, Union
 
-from common.common import OFFERS_FOLDER_PATH, PHOTOS, PROPERTIES_JSON
+from common.common import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
 
 
 class OffersDataCollector:
     def __init__(self):
-        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_PATH
+        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_NAME
 
     def get_offers_names(self) -> List[str]:
         return [offer.name for offer in os.scandir(self.global_offers_path) if offer.is_dir()]

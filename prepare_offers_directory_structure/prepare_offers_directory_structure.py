@@ -3,12 +3,12 @@ import os
 import random
 import string
 
-from common.common import OFFERS_FOLDER_PATH, PHOTOS, PROPERTIES_JSON
+from common.common import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
 
 
 class PrepareOffersDirectoryStructure:
     def __init__(self):
-        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_PATH
+        self.global_offers_path = os.path.dirname(__file__)[:os.path.dirname(__file__).rfind("\\")] + OFFERS_FOLDER_NAME
         self.json_data = {
             "description": "Description for an offer. In some cases (like OLX page), "
                            "the description has to be longer, than 80 characters.",
