@@ -1,3 +1,4 @@
+import codecs
 import json
 import os
 from typing import List, Dict, Union
@@ -19,7 +20,7 @@ class OffersDataCollector:
         offer_properties = {"title": offer_name,
                             "photos": [os.path.join(photos_path, photo.name) for photo in os.scandir(photos_path)
                                        if not photo.is_dir()]}
-        with open(os.path.join(offer_path, PROPERTIES_JSON), "r", encoding="utf-8") as properties_file:
+        with codecs.open(os.path.join(offer_path, PROPERTIES_JSON), "r", "utf-8") as properties_file:
             properties_data = json.load(properties_file)
         offer_properties.update(properties_data)
         return offer_properties

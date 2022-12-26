@@ -1,3 +1,4 @@
+import codecs
 import json
 import os
 import random
@@ -39,5 +40,5 @@ class PrepareOffersDirectoryStructure:
         list_of_offers = [offer.path for offer in os.scandir(self.global_offers_path) if offer.is_dir()]
         for offer_path in list_of_offers:
             if not os.path.exists(os.path.join(offer_path, PROPERTIES_JSON)):
-                with open(os.path.join(offer_path, PROPERTIES_JSON), "w") as properties_file:
-                    json.dump(self.json_data, properties_file, indent=4)
+                with codecs.open(os.path.join(offer_path, PROPERTIES_JSON), "w", "utf-8") as properties_file:
+                    json.dump(self.json_data, properties_file, indent=4, ensure_ascii=False)
