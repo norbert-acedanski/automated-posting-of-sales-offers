@@ -100,11 +100,11 @@ class CheckOffersForSites:
                 except FileNotFoundError:
                     continue
                 print("Categories for " + FC.YELLOW + site + FC.RESET + ": " + FC.BLUE + str(categories[site]) + FC.RESET)
-                for category in category_tree:
+                for category_index, category in enumerate(category_tree):
                     try:
                         tree_of_categories = tree_of_categories[category]
                     except KeyError:
-                        print(FC.RED + f"Wrong category name '{category}'!" + FC.RESET)
+                        print(FC.RED + f"Wrong category name '{category}' at index {category_index}!" + FC.RESET)
                         break
                 else:
                     print(FC.GREEN + "Correct categories!" + FC.RESET)
