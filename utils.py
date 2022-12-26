@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List, Union
+from typing import Dict, List, Literal, Union
 
 
 def _open_json_file(file_name: str) -> Union[List[int], Dict[str, Union[str, Dict[str, dict]]]]:
@@ -8,8 +8,8 @@ def _open_json_file(file_name: str) -> Union[List[int], Dict[str, Union[str, Dic
     return data
 
 
-def choose_categories() -> None:
-    categories = _open_json_file("./vinted_categories.json")
+def choose_categories(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"]) -> None:
+    categories = _open_json_file(f"{site}/{site}_categories.json")
     current_categories = list(categories.keys())
     children = categories
     tree_of_categories = []
@@ -30,14 +30,15 @@ def choose_categories() -> None:
     print(tree_of_categories)
 
 
-def print_vinted_colors() -> None:
-    colors = _open_json_file("./vinted_colors.json")
-    print("Vinted colors list:")
+def print_colors(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"]) -> None:
+    colors = _open_json_file(f"{site}/{site}_colors.json")
+    site = site.replace("_", " ").title()
+    print(f"{site} colors list:")
     for color in colors:
         print(color)
     print()
 
 
 if __name__ == "__main__":
-    print_vinted_colors()
-    choose_categories()
+    print_colors("vinted")
+    choose_categories("vinted")
