@@ -1,3 +1,4 @@
+import codecs
 import json
 from typing import Dict, List, Literal, Union
 
@@ -5,7 +6,7 @@ from typing import Dict, List, Literal, Union
 def _open_json_file(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"],
                     file_category: Literal["colors", "categories"]) -> \
         Union[List[int], Dict[str, Union[str, Dict[str, dict]]]]:
-    with open(f"{site}/{site}_{file_category}.json", "r") as file:
+    with codecs.open(f"{site}/{site}_{file_category}.json", "r", "utf-8") as file:
         data = json.load(file)
     return data
 
