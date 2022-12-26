@@ -1,3 +1,4 @@
+import codecs
 import json
 import os
 from typing import List, Dict, Union
@@ -5,6 +6,7 @@ from typing import List, Dict, Union
 from colors.colors import ForegroundColors as FC, BackgroundColors as BC, Styles
 from common.common import OFFERS_FOLDER_NAME, PROPERTIES_JSON, PHOTOS
 from common.limits import GeneralLimits, OLXLimits, AllegroLokalnieLimits, SprzedajemyLimits, VintedLimits
+from utils import _open_json_file
 
 
 class CheckOffersForSites:
@@ -39,7 +41,8 @@ class CheckOffersForSites:
     def _get_list_of_properties(self) -> List[Dict[str, Union[str, List[str], Dict[str, List[str]]]]]:
         properties = []
         for offer, number_of_photos in zip(self.list_of_offers, self.numbers_of_photos):
-            with open(os.path.join(self.global_offers_path, offer, PROPERTIES_JSON), "r") as properties_file:
+            with codecs.open(os.path.join(self.global_offers_path, offer, PROPERTIES_JSON), "r", "utf-8") \
+                    as properties_file:
                 properties_data = json.load(properties_file)
             properties_data["photos"] = number_of_photos
             properties.append(properties_data)
@@ -86,6 +89,26 @@ class CheckOffersForSites:
                     print(FC.RED + "Not in bounds" + FC.RESET)
                     print(f"Bounds for {site} are: min - {limits['min']}, max - {limits['max']}")
             print("")
+
+    def check_category_trees(self):
+        for offer_title, offer_properties in self.offers_properties.items():
+            print('Offer "' + FC.GREEN + offer_title + FC.RESET + '" category tree properties:')
+            categories = offer_properties["category"]
+            for site, category_tree in categories.items():
+                try:
+                    tree_of_categories = _open_json_file(site, "categories")
+                except FileNotFoundError:
+                    continue
+                print("Categories for " + FC.YELLOW + site + FC.RESET + ": " + FC.BLUE + str(categories[site]) + FC.RESET)
+                for category in category_tree:
+                    try:
+                        tree_of_categories = tree_of_categories[category]
+                    except KeyError:
+                        print(FC.RED + f"Wrong category name '{category}'!" + FC.RESET)
+                        break
+                else:
+                    print(FC.GREEN + "Correct categories!" + FC.RESET)
+        print("")
 
     def check_sexes(self):
         for offer_title, offer_properties in self.offers_properties.items():
