@@ -28,6 +28,7 @@ It is handy to check these kinds of information before starting the process of a
 # To Do:
 - Make a Frame class for Vinted for other pages to inherit from
 - Make a GenericModal class for Vinted for other modals to inherit from
+- Add function, that checks if a brand exists for a page
 - add list of colors, brands, materials, sexes, condition etc to OLX
 - add method, that checks the colors of the item
 - add method, that checks the category of the item (later if the list of categories is stored)
