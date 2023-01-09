@@ -2,16 +2,17 @@ import codecs
 import json
 from typing import Dict, List, Literal, Union
 
+BRAND_LITERAL = Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"]
 
-def _open_json_file(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"],
-                    file_category: Literal["colors", "categories"]) -> \
+
+def _open_json_file(site: BRAND_LITERAL, file_category: Literal["colors", "categories"]) -> \
         Union[List[int], Dict[str, Union[str, Dict[str, dict]]]]:
     with codecs.open(f"{site}/{site}_{file_category}.json", "r", "utf-8") as file:
         data = json.load(file)
     return data
 
 
-def choose_categories(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"]) -> None:
+def choose_categories(site: BRAND_LITERAL) -> None:
     categories = _open_json_file(site, "categories")
     current_categories = list(categories.keys())
     children = categories
@@ -33,7 +34,7 @@ def choose_categories(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzed
     print(tree_of_categories)
 
 
-def print_colors(site: Literal["vinted", "olx", "allegro_lokalnie", "sprzedajemy"]) -> None:
+def print_colors(site: BRAND_LITERAL) -> None:
     colors = _open_json_file(site, "colors")
     site = site.replace("_", " ").title()
     print(f"{site} colors list:")
