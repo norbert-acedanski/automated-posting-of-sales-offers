@@ -6,11 +6,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import MODALS_TIMEOUT
+from vinted.vinted_generic_modal import VintedGenericModal
 
 
-class VintedRegisterByEmailModal:
-    modal_xpath = "//div[contains(@class, 'ReactModal__Content--after-open')]"
-    x_button_xpath = "//span[@data-icon-name='x']//ancestor::button"
+class VintedRegisterByEmailModal(VintedGenericModal):
     full_name_textfield_xpath = "//input[@id='realName']"
     profile_name_textfield_xpath = "//input[@id='login']"
     email_textfield_xpath = "//input[@id='email']"
@@ -20,7 +19,7 @@ class VintedRegisterByEmailModal:
     continue_button_xpath = "//button[@type='submit']"
 
     def __init__(self, driver: webdriver.Chrome):
-        self.driver = driver
+        super().__init__(driver=driver)
         self.wait_for_essentials()
 
     def wait_for_essentials(self, timeout: Union[float, int] = MODALS_TIMEOUT) -> None:
@@ -30,9 +29,6 @@ class VintedRegisterByEmailModal:
                               self.confirm_regulations_checkbox_xpath, self.continue_button_xpath]:
             WebDriverWait(self.driver, timeout=timeout).\
                 until(EC.element_to_be_clickable((By.XPATH, self.modal_xpath + element_xpath)))
-
-    def click_x_button(self) -> None:
-        self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.x_button_xpath).click()
 
     def fill_full_name(self, full_name: str) -> None:
         self.driver.find_element(by=By.XPATH,

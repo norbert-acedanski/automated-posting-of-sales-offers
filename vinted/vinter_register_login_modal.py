@@ -6,13 +6,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import MODALS_TIMEOUT
+from vinted.vinted_generic_modal import VintedGenericModal
 from vinted.vinted_login_by_email_modal import VintedLoginByEmailModal
 from vinted.vinted_register_by_email_modal import VintedRegisterByEmailModal
 
 
-class VintedRegisterLoginModal:
-    modal_xpath = "//div[contains(@class, 'ReactModal__Content--after-open')]"
-    x_button_xpath = "//span[@data-icon-name='x']//ancestor::button"
+class VintedRegisterLoginModal(VintedGenericModal):
     continue_with_facebook_button_xpath = "//span[@data-icon-name='signup/facebook']/ancestor::button"
     continue_with_google_button_xpath = "//span[@data-icon-name='signup/google']/ancestor::button"
     continue_with_apple_button_xpath = "//span[@data-icon-name='signup/apple']/ancestor::button"
@@ -21,7 +20,7 @@ class VintedRegisterLoginModal:
     login_register_switch_xpath = "//span[@data-testid='auth-select-type--{}-switch']"
 
     def __init__(self, driver: webdriver.Chrome):
-        self.driver = driver
+        super().__init__(driver=driver)
         self.wait_for_essentials()
 
     def wait_for_essentials(self, timeout: Union[float, int] = MODALS_TIMEOUT) -> None:
@@ -30,9 +29,6 @@ class VintedRegisterLoginModal:
                               self.register_by_email_xpath, self.login_register_switch_xpath.format("register")]:
             WebDriverWait(self.driver, timeout=timeout).\
                 until(EC.element_to_be_clickable((By.XPATH, self.modal_xpath + element_xpath)))
-
-    def click_x_button(self) -> None:
-        self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.x_button_xpath).click()
 
     def click_register_by_email(self) -> VintedRegisterByEmailModal:
         self.driver.find_element(by=By.XPATH, value=self.modal_xpath + self.register_by_email_xpath).click()
