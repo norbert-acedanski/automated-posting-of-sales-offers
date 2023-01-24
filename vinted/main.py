@@ -1,6 +1,7 @@
 import time
 
 from colors.colors import ForegroundColors as FC, BackgroundColors as BC, Styles
+from common.common import open_browser
 
 from offers_data_handling.offers_data_collector import OffersDataCollector
 from open_vinted_page import open_vinted_main_page
@@ -8,7 +9,8 @@ from vinted_main_page import VintedMainPage
 
 
 if __name__ == "__main__":
-    vinted_main_page: VintedMainPage = open_vinted_main_page()
+    driver = open_browser()
+    vinted_main_page: VintedMainPage = open_vinted_main_page(driver=driver)
     vinted_main_page.choose_cookies_option(option="reject")
     vinted_login_register_modal = vinted_main_page.click_register_login_button()
     vinted_login_register_modal.switch_login_register(to_option="login")
