@@ -13,7 +13,7 @@ from vinted.vinted_register_by_email_modal import VintedRegisterByEmailModal
 
 class VintedRegisterLoginModal(VintedGenericModal):
     continue_with_facebook_button_xpath = "//span[@data-icon-name='signup/facebook']/ancestor::button"
-    continue_with_google_button_xpath = "//span[@data-icon-name='signup/google']/ancestor::button"
+    continue_with_google_button_xpath = "//span[@data-icon-name='signup/google']/ancestor::a"
     continue_with_apple_button_xpath = "//span[@data-icon-name='signup/apple']/ancestor::button"
     register_by_email_xpath = "//span[@data-testid='auth-select-type--register-email']"
     login_by_email_xpath = "//span[@data-testid='auth-select-type--login-email']"

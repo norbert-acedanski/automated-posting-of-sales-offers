@@ -6,12 +6,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from vinted.vinted_frame import VintedFrame
 from vinted_edit_profile_page import VintedEditProfilePage
 from vinted_constants import PAGES_TIMEOUT, SHORT_TIMEOUT
 
 
-class VintedMemberPage:
-    page_xpath = "//div[contains(@id, 'InAppMessage')]/parent::body"
+class VintedMemberPage(VintedFrame):
     profile_picture_xpath = "//div[@class='u-flexbox']/div/div[contains(@class, 'Image__image')]"
     profile_name = "//h1"
     profile_rating = "//button[@data-testid='rating-button']"
@@ -31,10 +31,12 @@ class VintedMemberPage:
     comment_comment_xpath = comment_rating_xpath + "/following-sibling::span"
 
     def __init__(self, driver: webdriver.Chrome):
-        self.driver: webdriver = driver
+        super().__init__(driver=driver)
         self.wait_for_essentials()
 
-    def wait_for_essentials(self, timeout: Union[float, int] = PAGES_TIMEOUT) -> None:
+    def wait_for_essentials(self, timeout: Union[float, int] = PAGES_TIMEOUT,
+                            include_elements_after_login: bool = True) -> None:
+        super().wait_for_essentials(timeout=timeout, include_elements_after_login=include_elements_after_login)
         for element_xpath in [self.profile_picture_xpath, self.profile_name, self.profile_rating,
                               self.number_of_comments_xpath, self.edit_profile_button_xpath, self.my_closet_tab_xpath,
                               self.feedback_tab_xpath, self.items_count_xpath, self.items_general_xpath]:

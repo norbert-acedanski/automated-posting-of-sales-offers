@@ -6,12 +6,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from vinted.vinted_frame import VintedFrame
 from vinted_constants import PAGES_TIMEOUT, PHOTO_UPLOAD_TIMEOUT
 from vinted_member_page import VintedMemberPage
 
 
-class VintedSellItemPage:
-    page_xpath = "//div[contains(@id, 'InAppMessage')]/parent::body"
+class VintedSellItemPage(VintedFrame):
 
     add_photos_button_xpath = "//div[@class='media-select__input-content']//button"
     add_photos_input_xpath = "//input[@data-testid='add-photos-input']"
@@ -27,7 +27,7 @@ class VintedSellItemPage:
     category_generic_element_xpath = "//li[@class='pile__element']"
     category_by_name_element_xpath = "//div[contains(@class, 'Cell__title') and text()='{}']"
     category_expand_arrow_by_name_xpath = category_by_name_element_xpath + \
-                                          "/ancestor::div[@role='presentation']/div[contains(@class, 'suffix')]"
+        "/ancestor::div[@role='presentation']/div[contains(@class, 'suffix')]"
 
     brand_textfield_xpath = "//input[@id='brand_id']"
     brand_dropdown_xpath = category_dropdown_xpath
@@ -40,7 +40,7 @@ class VintedSellItemPage:
 
     item_status_textfield_xpath = "//input[@id='status_id']"
     item_status_xpath = item_status_textfield_xpath + \
-                        "/following-sibling::div[@class='input-dropdown']//div[@id='status-{}']"
+        "/following-sibling::div[@class='input-dropdown']//div[@id='status-{}']"
 
     color_textfield_xpath = "//input[@id='color']/following-sibling::div/span[contains(@data-icon-name, 'chevron-')]"
     color_dropdown_xpath = "//div[@class='input-dropdown']"
@@ -54,10 +54,12 @@ class VintedSellItemPage:
     add_item_button_xpath = "//button[@data-testid='upload-form-save-button']/span"
 
     def __init__(self, driver: webdriver.Chrome):
-        self.driver: webdriver = driver
+        super().__init__(driver=driver)
         self.wait_for_essentials()
 
-    def wait_for_essentials(self, timeout: Union[float, int] = PAGES_TIMEOUT) -> None:
+    def wait_for_essentials(self, timeout: Union[float, int] = PAGES_TIMEOUT,
+                            include_elements_after_login: bool = True) -> None:
+        super().wait_for_essentials(timeout=timeout, include_elements_after_login=include_elements_after_login)
         for element_xpath in [self.add_photos_button_xpath, self.title_textfield_xpath, self.description_textfield_xpath,
                               self.brand_textfield_xpath, self.item_status_textfield_xpath, self.price_textfield_xpath,
                               self.add_item_button_xpath]:

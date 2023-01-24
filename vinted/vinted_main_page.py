@@ -6,31 +6,27 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import PAGES_TIMEOUT
+from vinted.vinted_frame import VintedFrame
 from vinted.vinted_manage_cookies_modal import VintedManageCookiesModal
-from vinted.vinted_sell_item_page import VintedSellItemPage
-from vinted.vinter_register_login_modal import VintedRegisterLoginModal
 
 
-class VintedMainPage:
-    page_xpath = "//div[contains(@id, 'InAppMessage')]/parent::body"
-    vinted_logo_xpath = "//div[@data-testid='header-logo-id']"
-    search_bar_xpath = "//input[@id='search_text']"
-    register_login_button_xpath = "//a[@role='button' and @data-testid='header--login-button']"
-    sell_button_xpath = "//a[@role='button' and @rel='nofollow']"
+class VintedMainPage(VintedFrame):
     tabs_component_xpath = "//ul[@class='web_ui__Tabs__content']"
     cookie_buttons_component_xpath = "//div[@id='onetrust-button-group-parent']"
     cookie_button_xpath = "//button[@id='onetrust-{}-handler']"
 
     def __init__(self, driver: webdriver.Chrome, wait_for_essentials: bool = True, wait_for_cookies: bool = False):
+        super().__init__(driver=driver, wait_for_essentials=wait_for_essentials)
         self.driver: webdriver = driver
         if wait_for_essentials:
             self.wait_for_essentials()
         if wait_for_cookies:
             self.wait_for_cookies()
 
-    def wait_for_essentials(self, timeout: Union[float, int] = PAGES_TIMEOUT) -> None:
-        for element_xpath in [self.vinted_logo_xpath, self.search_bar_xpath, self.sell_button_xpath,
-                              self.tabs_component_xpath]:
+    def wait_for_essentials(self, timeout: Union[float, int] = PAGES_TIMEOUT,
+                            include_elements_after_login: bool = False) -> None:
+        super().wait_for_essentials(timeout=timeout, include_elements_after_login=include_elements_after_login)
+        for element_xpath in [self.tabs_component_xpath]:
             WebDriverWait(self.driver, timeout=timeout).\
                 until(EC.element_to_be_clickable((By.XPATH, self.page_xpath + element_xpath)))
 
@@ -50,11 +46,3 @@ class VintedMainPage:
             return VintedManageCookiesModal(self.driver)
         else:
             self.wait_for_essentials()
-
-    def click_register_login_button(self) -> VintedRegisterLoginModal:
-        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.register_login_button_xpath).click()
-        return VintedRegisterLoginModal(self.driver)
-
-    def click_sell_button(self) -> VintedSellItemPage:
-        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.sell_button_xpath).click()
-        return VintedSellItemPage(self.driver)
