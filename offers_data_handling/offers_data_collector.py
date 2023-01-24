@@ -3,7 +3,7 @@ import json
 import os
 from typing import List, Dict, Union
 
-from common.common import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
+from common.constants import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
 
 
 class OffersDataCollector:

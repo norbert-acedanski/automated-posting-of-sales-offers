@@ -4,7 +4,7 @@ import os
 from typing import List, Dict, Union
 
 from colors.colors import ForegroundColors as FC, BackgroundColors as BC, Styles
-from common.common import OFFERS_FOLDER_NAME, PROPERTIES_JSON, PHOTOS
+from common.constants import OFFERS_FOLDER_NAME, PROPERTIES_JSON, PHOTOS
 from common.limits import GeneralLimits, OLXLimits, AllegroLokalnieLimits, SprzedajemyLimits, VintedLimits
 from utils import _open_json_file
 

@@ -4,7 +4,7 @@ import os
 import random
 import string
 
-from common.common import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
+from common.constants import OFFERS_FOLDER_NAME, PHOTOS, PROPERTIES_JSON
 
 
 class PrepareOffersDirectoryStructure:
