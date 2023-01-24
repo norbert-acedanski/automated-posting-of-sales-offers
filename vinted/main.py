@@ -18,7 +18,7 @@ if __name__ == "__main__":
     vinted_login_modal.fill_email_profile_name("Sample profile name")
     vinted_login_modal.fill_password(password="Sample Password")
     vinted_login_modal.click_continue_button()
-    vinted_main_page.wait_for_essentials()
+    vinted_main_page.wait_for_essentials(include_elements_after_login=True)
     data_collector = OffersDataCollector()
     offers_names = data_collector.get_offers_names()
     print("\n" + FC.MAGENTA + BC.BLACK + f"Starting to upload {len(offers_names)} offers to Vinted."
