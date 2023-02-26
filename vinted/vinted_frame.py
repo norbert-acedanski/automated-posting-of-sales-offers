@@ -1,20 +1,25 @@
 from typing import Union
 
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import PAGES_TIMEOUT
+
+from vinted.vinted_notifications_dropdown import VintedNotificationsDropdown
 from vinted.vinter_register_login_modal import VintedRegisterLoginModal
 
 
 class VintedFrame:
     page_xpath = "//div[contains(@id, 'InAppMessage')]/parent::body"
-    vinted_logo_xpath = "//div[@data-testid='header-logo-id']"
+    vinted_logo_xpath = "//*[@data-testid='header-logo-id']"
     search_bar_xpath = "//input[@id='search_text']"
     inbox_button_xpath = "//span[@data-icon-name='envelope']"
     notifications_button_xpath = "//span[@data-icon-name='bell']"
+    new_notifications_icon_xpath = notifications_button_xpath + "/*"
+    notifications_dropdown_xpath = notifications_button_xpath + "/ancestor::a[@role='button']/following-sibling::div[@class='header-notification-dropdown']"
     favorites_button_xpath = "//span[@data-icon-name='heart']"
     register_login_button_xpath = "//a[@role='button' and @data-testid='header--login-button']"
     user_menu_button_xpath = "//div[@id='user-menu-button']"
@@ -44,13 +49,35 @@ class VintedFrame:
         from vinted.vinted_main_page import VintedMainPage
         return VintedMainPage(self.driver)
 
-    def click_inbox_button(self) -> VintedInboxPage:
+    def click_inbox_button(self):
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.inbox_button_xpath).click()
-        return VintedInboxPage(self.driver)  # TODO: Not implemented
+        from vinted.vinted_inbox_page import VintedInboxPage
+        return VintedInboxPage(self.driver)
 
-    def click_notifications_button(self) -> VintedNotificatonsDropdown:
+    def is_there_a_new_notification(self) -> bool:
+        try:
+            int(self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.new_notifications_icon_xpath).
+                get_attribute("aria-label").split()[0])
+        except ValueError:
+            return False
+        return True
+
+    def get_number_of_unread_notifications(self) -> int:
+        if self.is_there_a_new_notification():
+            return int(self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.new_notifications_icon_xpath).
+                       get_attribute("aria-label").split()[0])
+        return 0
+
+    def click_notifications_button(self) -> VintedNotificationsDropdown:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.notifications_button_xpath).click()
-        return VintedNotificatonsDropdown(self.driver)  # TODO: Not implemented
+        return VintedNotificationsDropdown(self.driver)
+
+    def is_notifications_dropdown_opened(self) -> bool:
+        try:
+            self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.notifications_dropdown_xpath)
+        except NoSuchElementException:
+            return False
+        return True
 
     def click_favorites_button(self) -> VintedFavoritesPage:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.favorites_button_xpath).click()
