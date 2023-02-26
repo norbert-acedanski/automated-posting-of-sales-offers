@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import MODALS_TIMEOUT
+from vinted.vinted_notifications_page import VintedNotificationsPage
 
 
 class VintedNotificationsDropdown:
@@ -34,4 +35,4 @@ class VintedNotificationsDropdown:
 
     def click_see_all(self) -> VintedNotificationsPage:
         self.driver.find_element(by=By.XPATH, value=self.dropdown_xpath + self.see_all_button_xpath).click()
-        return VintedNotificationsPage(self.driver)  # TODO: Not implemented
+        return VintedNotificationsPage(self.driver)
