@@ -58,7 +58,7 @@ class VintedMemberPage(VintedFrame):
 
     def click_edit_profile_button(self) -> VintedEditProfilePage:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.edit_profile_button_xpath).click()
-        return VintedEditProfilePage(self.driver)  # TODO: Not implemented
+        return VintedEditProfilePage(self.driver)
 
     def click_my_closet_tab(self) -> None:
         self.scroll_max_up()
