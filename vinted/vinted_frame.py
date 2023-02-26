@@ -7,8 +7,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import PAGES_TIMEOUT
-
+from vinted.vinted_favorites_page import VintedFavoritesPage
 from vinted.vinted_notifications_dropdown import VintedNotificationsDropdown
+from vinted.vinted_user_menu_dropdown import VintedUserMenuDropdown
 from vinted.vinter_register_login_modal import VintedRegisterLoginModal
 
 
@@ -81,7 +82,7 @@ class VintedFrame:
 
     def click_favorites_button(self) -> VintedFavoritesPage:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.favorites_button_xpath).click()
-        return VintedFavoritesPage(self.driver)  # TODO: Not implemented
+        return VintedFavoritesPage(self.driver)
 
     def click_register_login_button(self) -> VintedRegisterLoginModal:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.register_login_button_xpath).click()
@@ -89,7 +90,7 @@ class VintedFrame:
 
     def click_user_menu_button(self) -> VintedUserMenuDropdown:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.register_login_button_xpath).click()
-        return VintedUserMenuDropdown(self.driver)  # TODO: Not implemented
+        return VintedUserMenuDropdown(self.driver)
 
     def click_sell_button(self):
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.sell_button_xpath).click()
