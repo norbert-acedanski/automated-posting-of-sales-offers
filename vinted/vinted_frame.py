@@ -1,3 +1,4 @@
+import time
 from typing import Union
 
 from selenium import webdriver
@@ -96,3 +97,8 @@ class VintedFrame:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.sell_button_xpath).click()
         from vinted.vinted_sell_item_page import VintedSellItemPage
         return VintedSellItemPage(self.driver)
+
+    def scroll_max_down(self) -> None:
+        self.driver.execute_script("window.scrollTo(0,0)")
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(0.5)
