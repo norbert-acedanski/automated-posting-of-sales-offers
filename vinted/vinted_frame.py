@@ -8,9 +8,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from vinted.vinted_constants import PAGES_TIMEOUT
-from vinted.vinted_favorites_page import VintedFavoritesPage
-from vinted.vinted_notifications_dropdown import VintedNotificationsDropdown
-from vinted.vinted_user_menu_dropdown import VintedUserMenuDropdown
 from vinted.vinter_register_login_modal import VintedRegisterLoginModal
 
 
@@ -70,8 +67,9 @@ class VintedFrame:
                        get_attribute("aria-label").split()[0])
         return 0
 
-    def click_notifications_button(self) -> VintedNotificationsDropdown:
+    def click_notifications_button(self):
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.notifications_button_xpath).click()
+        from vinted.vinted_notifications_dropdown import VintedNotificationsDropdown
         return VintedNotificationsDropdown(self.driver)
 
     def is_notifications_dropdown_opened(self) -> bool:
@@ -81,16 +79,18 @@ class VintedFrame:
             return False
         return True
 
-    def click_favorites_button(self) -> VintedFavoritesPage:
+    def click_favorites_button(self):
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.favorites_button_xpath).click()
+        from vinted.vinted_favorites_page import VintedFavoritesPage
         return VintedFavoritesPage(self.driver)
 
     def click_register_login_button(self) -> VintedRegisterLoginModal:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.register_login_button_xpath).click()
         return VintedRegisterLoginModal(self.driver)
 
-    def click_user_menu_button(self) -> VintedUserMenuDropdown:
-        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.register_login_button_xpath).click()
+    def click_user_menu_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.user_menu_button_xpath).click()
+        from vinted.vinted_user_menu_dropdown import VintedUserMenuDropdown
         return VintedUserMenuDropdown(self.driver)
 
     def click_sell_button(self):
