@@ -2,7 +2,7 @@ import time
 from typing import Union
 
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -105,6 +105,11 @@ class VintedFrame:
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(0.5)
 
-    def wait_for_loading_indicator_to_disappear(self, timeout: Union[int, float] = PAGES_TIMEOUT):
-        WebDriverWait(self.driver, timeout=timeout). \
-            until_not(EC.presence_of_element_located((By.XPATH, self.page_xpath + self.loading_indicator_xpath)))
+    def wait_for_loading_indicator_to_disappear(self, timeout: Union[int, float] = PAGES_TIMEOUT,
+                                                include_page_xpath: bool = True):
+        page_xpath = self.page_xpath if include_page_xpath else ""
+        try:
+            WebDriverWait(self.driver, timeout=timeout). \
+                until_not(EC.presence_of_element_located((By.XPATH, page_xpath + self.loading_indicator_xpath)))
+        except TimeoutException:
+            pass
