@@ -79,8 +79,7 @@ class VintedSellItemPage(VintedFrame):
                 until(EC.presence_of_element_located((By.XPATH, self.page_xpath + self.loading_indicator_xpath)))
         except TimeoutException:
             pass
-        WebDriverWait(self.driver, timeout=timeout). \
-            until_not(EC.presence_of_element_located((By.XPATH, self.page_xpath + self.loading_indicator_xpath)))
+        self.wait_for_loading_indicator_to_disappear(timeout=timeout)
 
     def add_title_to_offer(self, title: str) -> None:
         self.driver.find_element(by=By.XPATH, value=self.page_xpath + self.title_textfield_xpath).send_keys(title)

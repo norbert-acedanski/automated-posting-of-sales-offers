@@ -104,3 +104,7 @@ class VintedFrame:
         self.driver.execute_script("window.scrollTo(0,0)")
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(0.5)
+
+    def wait_for_loading_indicator_to_disappear(self, timeout: Union[int, float] = PAGES_TIMEOUT):
+        WebDriverWait(self.driver, timeout=timeout). \
+            until_not(EC.presence_of_element_located((By.XPATH, self.page_xpath + self.loading_indicator_xpath)))
