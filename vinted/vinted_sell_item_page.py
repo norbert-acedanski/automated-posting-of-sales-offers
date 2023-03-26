@@ -15,7 +15,6 @@ class VintedSellItemPage(VintedFrame):
 
     add_photos_button_xpath = "//div[@class='media-select__input-content']//button"
     add_photos_input_xpath = "//input[@data-testid='add-photos-input']"
-    loading_indicator_xpath = "//*[local-name()='circle']"
 
     title_textfield_xpath = "//input[@id='title']"
 

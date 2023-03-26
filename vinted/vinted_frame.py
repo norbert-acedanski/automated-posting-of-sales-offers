@@ -24,6 +24,8 @@ class VintedFrame:
     user_menu_button_xpath = "//div[@id='user-menu-button']"
     sell_button_xpath = "//a[@role='button' and @rel='nofollow']"
 
+    loading_indicator_xpath = "//*[local-name()='circle']"
+
     def __init__(self, driver: webdriver.Chrome, wait_for_essentials: bool = True):
         self.driver = driver
         if wait_for_essentials:
